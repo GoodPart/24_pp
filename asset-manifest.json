@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/GoodPart/24_pp/static/css/main.c37cb65e.css",
+    "main.js": "/GoodPart/24_pp/static/js/main.8c6afb23.js",
+    "static/js/453.3ded806b.chunk.js": "/GoodPart/24_pp/static/js/453.3ded806b.chunk.js",
+    "index.html": "/GoodPart/24_pp/index.html",
+    "main.c37cb65e.css.map": "/GoodPart/24_pp/static/css/main.c37cb65e.css.map",
+    "main.8c6afb23.js.map": "/GoodPart/24_pp/static/js/main.8c6afb23.js.map",
+    "453.3ded806b.chunk.js.map": "/GoodPart/24_pp/static/js/453.3ded806b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c37cb65e.css",
+    "static/js/main.8c6afb23.js"
+  ]
+}
