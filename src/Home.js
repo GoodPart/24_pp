@@ -33,14 +33,9 @@ function Home({ themeChange }) {
             </PanelFlx>
             <PanelFlx padding={24} />
           </PanelFlexInnerWrap>
-          <PanelFlexInnerWrap direction={"column"} expanded={true}>
-            <PanelFlx flex={1} />
-            <PanelFlx flex={1} />
-          </PanelFlexInnerWrap>
-        </PanelWrapper>
-        <PanelWrapper>
-          <PanelFlexInnerWrap direction={"row"}>
-            <PanelFlx flex={"inherit"} width={400} height={220} padding={24} />
+          <PanelFlexInnerWrap direction={"column"}>
+            <PanelFlx padding={24} />
+            <PanelFlx padding={24} />
           </PanelFlexInnerWrap>
         </PanelWrapper>
       </div>
