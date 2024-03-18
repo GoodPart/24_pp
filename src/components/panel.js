@@ -81,7 +81,8 @@ const PanelFlxWrap = styled.div`
   &.show {
     animation-name: showItem;
     animation-duration: 0.4s;
-    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); */
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     animation-fill-mode: forwards;
     animation-direction: normal;
   }

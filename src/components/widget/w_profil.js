@@ -9,7 +9,7 @@ export default function WidgetProfile({ thumbnail, name, age }) {
           <img src="https://pbs.twimg.com/profile_images/1343164971681599488/ZV30t8pJ_400x400.jpg" />
         </Thumbnail>
         <Desc1>
-          <div className="title">GoodPart</div>
+          <div className="title">박경수</div>
           <div className="title--sub">
             안녕하세요 만나서 반갑습니다. 박경수입니다.
           </div>

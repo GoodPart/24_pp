@@ -161,7 +161,10 @@ hr {
     height: auto;
   }
 }
-
+.page-wrap {
+  margin: 0 auto;
+  max-width: 1920px;
+}
 .page-wrap.dark {
   background: linear-gradient(
     131deg,

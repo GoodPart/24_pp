@@ -4,6 +4,7 @@ import Buttons from "./components/widget/w_buttons";
 import WidgetProfile from "./components/widget/w_profil";
 import ThemeWidget from "./components/widget/w_theme";
 import styled from "styled-components";
+import Today from "./components/widget/w_today";
 
 function Home({ themeChange }) {
   let [theme, setTheme] = useState(false);
@@ -31,12 +32,20 @@ function Home({ themeChange }) {
               <ThemeWidget />
               <Buttons title={"테마"} onclick={themeChange} />
             </PanelFlx>
-            <PanelFlx padding={24} />
+            <PanelFlx
+              padding={24}
+              children={<Today />}
+              flexDirection={"column"}
+              justify="center"
+            />
           </PanelFlexInnerWrap>
           <PanelFlexInnerWrap direction={"column"} expanded={true}>
             <PanelFlx padding={24} />
-            <PanelFlx padding={24} />
           </PanelFlexInnerWrap>
+          {/* <PanelFlexInnerWrap direction={"column"} expanded={true}>
+            <PanelFlx padding={24} />
+            <PanelFlx padding={24} />
+          </PanelFlexInnerWrap> */}
         </PanelWrapper>
       </div>
     </div>
