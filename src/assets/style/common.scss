@@ -87,7 +87,10 @@ video {
   border: 0;
   font-size: 100%;
   vertical-align: baseline;
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -108,18 +111,19 @@ section {
 *[hidden] {
   display: none;
 }
-html,body {
+html,
+body {
   width: 100%;
   height: 100%;
   min-width: 375px;
 }
 body {
   line-height: 1;
-  background: rgb(238,174,202);
-  background: linear-gradient(131deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  // background: rgb(238,174,202);
+  // background: linear-gradient(131deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
   width: 100%;
   height: 100%;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
 }
 menu,
 ol,
@@ -149,7 +153,23 @@ hr {
 
 // reset
 
-.test {
-  color: orange;
-  font-weight: bold;
+#root,
+.page-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.page-wrap.dark {
+  background: linear-gradient(
+    131deg,
+    rgba(65, 61, 63, 1) 0%,
+    rgba(29, 57, 91, 1) 100%
+  );
+}
+.page-wrap.light {
+  background: linear-gradient(
+    131deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
 }
