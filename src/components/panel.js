@@ -147,9 +147,13 @@ export const PanelFlexInnerWrap = styled.div`
     width: ${(props) => (props.expanded ? "inherit" : props.width)};
     height: ${(props) => (props.expanded ? "inherit" : props.height)};
   }
-
   @media (max-width: 767px) {
     width: 100%;
+
+    > * {
+      width: calc(100% - 48px);
+      /* height: ${(props) => (props.expanded ? "inherit" : props.height)}; */
+    }
   }
 `;
 

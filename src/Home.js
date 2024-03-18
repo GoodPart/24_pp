@@ -33,7 +33,7 @@ function Home({ themeChange }) {
             </PanelFlx>
             <PanelFlx padding={24} />
           </PanelFlexInnerWrap>
-          <PanelFlexInnerWrap direction={"column"}>
+          <PanelFlexInnerWrap direction={"column"} expanded={true}>
             <PanelFlx padding={24} />
             <PanelFlx padding={24} />
           </PanelFlexInnerWrap>
