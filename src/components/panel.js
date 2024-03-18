@@ -39,6 +39,7 @@ export const PanelWrapper = styled.div`
   flex-wrap: wrap;
   gap: 12px;
   padding: 12px;
+  width: calc(100% - 24px);
 
   & + div {
     padding-top: 0;
@@ -130,6 +131,10 @@ const PanelFlxWrap = styled.div`
       transform: translate3d(4px, 0, 0);
     }
   }
+
+  @media (max-width: 767px) {
+    width: calc(100% - 48px);
+  }
 `;
 
 export const PanelFlexInnerWrap = styled.div`
@@ -141,6 +146,10 @@ export const PanelFlexInnerWrap = styled.div`
   > * {
     width: ${(props) => (props.expanded ? "inherit" : props.width)};
     height: ${(props) => (props.expanded ? "inherit" : props.height)};
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;
 

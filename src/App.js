@@ -20,7 +20,7 @@ const lightTheme = {
 };
 
 function App() {
-  const [themeMode, setThemeMode] = useState(false);
+  const [themeMode, setThemeMode] = useState(true);
 
   function themeChange() {
     setThemeMode(!themeMode);
