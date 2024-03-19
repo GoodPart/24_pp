@@ -78,17 +78,10 @@ const PanelFlxWrap = styled.div`
   border-radius: 10px;
   border: ${(props) => props.theme.borderColor};
 
-  & > div > div{
-
-    /* &:hover {
-      animation-name: shakeItem;
-      animation-duration: 0.4s;
-      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-      animation-fill-mode: forwards;
-      animation-direction: normal;
-    } */
-    
+ & .show {
+  &:hover {
   }
+ }
 
   
 
@@ -157,11 +150,11 @@ export const PanelFlexInnerWrap = styled.div`
   flex: ${(props) => (props.expanded ? 1 : "none")};
   flex-direction: ${(props) => props.direction};
   flex-wrap: ${props=>props.flexWrap ? "wrap" : ""};
-  gap: 12px;
+  gap: ${props => props.gap ? props.gap : "12"}px;
 
   > * {
     width: ${(props) => (props.expanded ? "inherit" : props.width)};
-    height: ${(props) => (props.expanded ? "inherit" : props.height)};
+    height: ${(props) => (props.expanded ? "" : props.height)};
   }
   @media (max-width: 767px) {
     width: 100%;

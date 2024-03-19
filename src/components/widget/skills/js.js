@@ -1,6 +1,6 @@
-export const html = {
-    img: "html.svg",
-    title: "HTML",
+export const js = {
+    img: "javascript.svg",
+    title: "JS",
     data: [
         {
             title: "경험",

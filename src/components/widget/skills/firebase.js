@@ -1,6 +1,6 @@
-export const html = {
-    img: "html.svg",
-    title: "HTML",
+export const firebase = {
+    img: "firebase.svg",
+    title: "Firebase",
     data: [
         {
             title: "경험",

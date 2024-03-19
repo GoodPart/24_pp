@@ -1,6 +1,6 @@
-export const html = {
-    img: "html.svg",
-    title: "HTML",
+export const flutter = {
+    img: "flutter.svg",
+    title: "Flutter",
     data: [
         {
             title: "경험",

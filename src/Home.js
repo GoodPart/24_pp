@@ -9,6 +9,18 @@ import Today from "./components/widget/w_today";
 import FloatWrap from "./components/widget/w_float";
 import { html } from "./components/widget/skills/html";
 import { css } from "./components/widget/skills/css";
+import { js } from "./components/widget/skills/js";
+import { nodejs } from "./components/widget/skills/node";
+import { react } from "./components/widget/skills/react";
+import { redux } from "./components/widget/skills/redux";
+import { mongodb } from "./components/widget/skills/mongodb";
+import { firebase } from "./components/widget/skills/firebase";
+import { flutter } from "./components/widget/skills/flutter";
+import { gulp } from './components/widget/skills/glup';
+
+
+
+
 
 function Home({ floatData,themeChange, floating }) {
   let [theme, setTheme] = useState(false);
@@ -48,23 +60,16 @@ function Home({ floatData,themeChange, floating }) {
           </PanelFlexInnerWrap>
           <PanelFlexInnerWrap direction={"column"} expanded={true}>
             <PanelFlx padding={24}>
-              <PanelFlexInnerWrap direction={"row"} flexWrap={true} expanded={true}>
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={html} />} />
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0}  children={<FloatWrap onclick={floating} state={false} data={css} />} />
+              <PanelFlexInnerWrap direction={"row"} flexWrap={true} expanded={true} gap={10}>
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={html} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={js} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={nodejs} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={gulp} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={react} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={redux} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={mongodb} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={firebase} />} />
 
             
         

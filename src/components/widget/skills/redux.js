@@ -1,6 +1,6 @@
-export const html = {
-    img: "html.svg",
-    title: "HTML",
+export const redux = {
+    img: "redux.svg",
+    title: "Redux",
     data: [
         {
             title: "경험",

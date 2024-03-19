@@ -1,6 +1,6 @@
-export const html = {
-    img: "html.svg",
-    title: "HTML",
+export const gulp = {
+    img: "gulp.svg",
+    title: "Gulp",
     data: [
         {
             title: "경험",
