@@ -5,26 +5,65 @@ import About from "./about";
 import styled, { ThemeProvider, DefaultTheme } from "styled-components";
 
 const darkTheme = {
+  white : "#fff",
   textColor: "#ddd",
   backgroundColor: "rgba(68, 68, 68, 0.6)",
+  backgroundColorDepth2: "rgba(68, 68, 68, 0.8)",
   linearGradientColor:
     "linear-gradient(131deg,rgba(238, 174, 202, 1) 0%,rgba(148, 187, 233, 1) 100%)",
   borderColor: "1px solid rgba(255, 255, 255, 0.1)",
 };
 const lightTheme = {
+  white: "#fff",
   textColor: "#444",
   backgroundColor: "rgba(255,255,255, 0.6)",
+  backgroundColorDepth2: "rgba(255, 255, 255, 0.8)",
   linearGradientColor:
     "linear-gradient(131deg, rgba(65,61,63,1) 0%, rgba(29,57,91,1) 100%)",
   borderColor: "1px solid rgba(68, 68, 68, 0.18)",
 };
 
 function App() {
+  // theme 데이터 상태관리
   const [themeMode, setThemeMode] = useState(true);
+  const [floatData, setFloatData] = useState({
+    viewData: "",
+    state: false,
+    windowCalcData : ""
+  });
 
   function themeChange() {
     setThemeMode(!themeMode);
   }
+  
+  function floatOpPress({data : data}, e) {
+    
+    
+    if (data == "close") {
+      setFloatData({
+        viewData: data,
+        state: false,
+        windowCalcData : floatData.windowCalcData
+      })
+    } else {
+      const windowData = {
+        x: e.clientX,
+        y: e.clientY
+      }
+      setFloatData({
+        viewData: data,
+        state: true,
+        windowCalcData: windowData
+        
+      })
+    }
+    
+  }
+
+  const globalActions = { themeChange, floatOpPress }
+
+  
+
 
   return (
     <ThemeProvider theme={themeMode ? lightTheme : darkTheme}>
@@ -35,7 +74,7 @@ function App() {
             <Route
               exact
               path="/"
-              element={<Home themeChange={themeChange} />}
+              element={<Home floatData={floatData} themeChange={globalActions.themeChange} floating={globalActions.floatOpPress} />}
             />
             <Route path="/about" element={<About />} />
           </Routes>

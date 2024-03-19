@@ -37,13 +37,13 @@ export default function Today() {
   return (
     <>
       <Heading01>{today}</Heading01>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", alignSelf: "center" }}>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
             <Heading02>{getMonth}</Heading02>
             <Heading02>{getDate}</Heading02>
           </div>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
             <Heading02>{getHour}</Heading02>
             <Heading02>{getMin}</Heading02>
           </div>
@@ -58,6 +58,7 @@ const Heading01 = styled.div`
   align-self: center;
   font-size: 36px;
   font-weight: 700;
+  letter-spacing: 2px;
   color: ${(props) => props.theme.textColor};
 `;
 const Heading02 = styled.div`

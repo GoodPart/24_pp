@@ -78,6 +78,20 @@ const PanelFlxWrap = styled.div`
   border-radius: 10px;
   border: ${(props) => props.theme.borderColor};
 
+  & > div > div{
+
+    /* &:hover {
+      animation-name: shakeItem;
+      animation-duration: 0.4s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: forwards;
+      animation-direction: normal;
+    } */
+    
+  }
+
+  
+
   &.show {
     animation-name: showItem;
     animation-duration: 0.4s;
@@ -142,6 +156,7 @@ export const PanelFlexInnerWrap = styled.div`
   display: flex;
   flex: ${(props) => (props.expanded ? 1 : "none")};
   flex-direction: ${(props) => props.direction};
+  flex-wrap: ${props=>props.flexWrap ? "wrap" : ""};
   gap: 12px;
 
   > * {
@@ -162,3 +177,16 @@ export const PanelFooterWrap = styled.div`
   display: flex;
   background-color: coral;
 `;
+
+
+export const PanelChildPanelWrap = styled.div`
+  display: flex;
+  flex-direction: ${(props) => props.direction};
+  gap: 12px;
+  background-color: ${props => props.theme.backgroundColorDepth2};
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  
+
+`

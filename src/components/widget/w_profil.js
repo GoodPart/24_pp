@@ -43,6 +43,8 @@ const ProfileWrap = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: center;
+
+  //공통 빼자
   animation-name: showing;
   animation-duration: 0.6s;
   animation-delay: 0.4s;
@@ -50,11 +52,6 @@ const ProfileWrap = styled.div`
   animation-fill-mode: forwards;
   animation-direction: normal;
 
-  &:hover .profile__desc--1 > div:first-child {
-    transform: translateY(-2px);
-    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.26),
-      1px 1px 4px 0 rgba(0, 0, 0, 0.26);
-  }
 
   .profile__desc--1 {
     display: flex;
@@ -105,14 +102,26 @@ const Heading01 = styled.h1`
 `;
 
 const Thumbnail = styled.div`
+  position: relative;
   display: flex;
-  overflow: hidden;
   width: 96px;
-  border-radius: 60px;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   img {
+    overflow: hidden;
+    border-radius: 60px;
     width: 100%;
     object-fit: cover;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 16px;
+    background : ${props => props.theme.linearGradientColor};
   }
 `;
 
