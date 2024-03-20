@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, PanelChildPanelWrap } from "./components/panel";
+import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, ExpandedPanel } from "./components/panel";
 import Popup from "./components/widget/w_popup";
 import Buttons from "./components/widget/w_buttons";
 import WidgetProfile from "./components/widget/w_profil";
@@ -7,7 +7,7 @@ import ThemeWidget from "./components/widget/w_theme";
 import styled from "styled-components";
 import Today from "./components/widget/w_today";
 import FloatWrap from "./components/widget/w_float";
-import { html } from "./components/widget/skills/html";
+import { Pages, html } from "./components/widget/skills/html";
 import { css } from "./components/widget/skills/css";
 import { js } from "./components/widget/skills/js";
 import { nodejs } from "./components/widget/skills/node";
@@ -22,10 +22,10 @@ import { gulp } from './components/widget/skills/glup';
 
 
 
-function Home({ floatData,themeChange, floating }) {
+function Home({ floatData, themeChange, floating, testAction, testState }) {
   let [theme, setTheme] = useState(false);
 
-
+  
   return (
     <div className="main">
       <div className="skill-wrap">
@@ -40,7 +40,7 @@ function Home({ floatData,themeChange, floating }) {
               children={<WidgetProfile />}
             />
           </PanelFlexInnerWrap>
-          <PanelFlexInnerWrap direction={"column"}>
+          <PanelFlexInnerWrap direction={"column"} className={"widgets"}>
             <PanelFlx
               padding={24}
               flex={0}
@@ -58,7 +58,7 @@ function Home({ floatData,themeChange, floating }) {
               justify="center"
             />
           </PanelFlexInnerWrap>
-          <PanelFlexInnerWrap direction={"column"} expanded={true}>
+          <PanelFlexInnerWrap direction={"column"} expanded={true} className={"skills"}>
             <PanelFlx padding={24}>
               <PanelFlexInnerWrap direction={"row"} flexWrap={true} expanded={true} gap={10}>
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={html} />} />
@@ -82,13 +82,17 @@ function Home({ floatData,themeChange, floating }) {
         
         <PanelWrapper>
           <PanelFlexInnerWrap direction={"column"} expanded={true}>
-            <PanelFlx padding={24}>
-              <PanelFlx />
+            <PanelFlx padding={24} gap={12}>
+              <ExpandedPanel id="a1" testState={testState} children={<Pages id="a1" testState={testState} onclick={testAction} children={html} />} />
+              <ExpandedPanel id="a2" testState={testState} children={<Pages id="a2" testState={testState} onclick={testAction} children={css} />} />
+
+
+
             </PanelFlx>
           </PanelFlexInnerWrap>
         </PanelWrapper>
       </div>
-      <Popup floatData={floatData} onclick={floating} children={<div>{floatData.viewData.title}<br /> {floatData.viewData.desc}</div>} />
+      {/* <Popup floatData={floatData} onclick={floating} children={<div>{floatData.viewData.title}<br /> {floatData.viewData.desc}</div>} /> */}
     </div>
   );
 }

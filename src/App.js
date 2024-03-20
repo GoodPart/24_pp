@@ -19,7 +19,7 @@ const lightTheme = {
   backgroundColor: "rgba(255,255,255, 0.6)",
   backgroundColorDepth2: "rgba(255, 255, 255, 0.8)",
   linearGradientColor:
-    "linear-gradient(131deg, rgba(65,61,63,1) 0%, rgba(29,57,91,1) 100%)",
+    "#121212",
   borderColor: "1px solid rgba(68, 68, 68, 0.18)",
 };
 
@@ -30,6 +30,12 @@ function App() {
     viewData: "",
     state: false,
     windowCalcData : ""
+  });
+  const [testData, setTestData] = useState({
+    viewData : "",
+    state: false,
+    windowCalcData: "",
+    id : "",
   });
 
   function themeChange() {
@@ -46,9 +52,12 @@ function App() {
         windowCalcData : floatData.windowCalcData
       })
     } else {
+
       const windowData = {
         x: e.clientX,
-        y: e.clientY
+        y: e.clientY,
+        getX: e.currentTarget.getBoundingClientRect().left,
+        getY: e.currentTarget.getBoundingClientRect().top
       }
       setFloatData({
         viewData: data,
@@ -57,10 +66,34 @@ function App() {
         
       })
     }
+  }
+  function panelFunction ({ data: data}, e){
+    
+    if (data == "close") { 
+      setTestData({
+        viewData : data,
+        state: false,
+        windowCalcData: "",
+        id: ""
+      })
+    } else {
+      const windowData = {
+        getX: e.currentTarget.getBoundingClientRect().left,
+        getY: e.currentTarget.getBoundingClientRect().top
+      }
+      setTestData({
+        viewData: data,
+        state: true,
+        windowCalcData: windowData,
+        id: e.currentTarget.id
+      })
+
+
+    }
     
   }
 
-  const globalActions = { themeChange, floatOpPress }
+  const globalActions = { themeChange, floatOpPress, panelFunction };
 
   
 
@@ -74,7 +107,12 @@ function App() {
             <Route
               exact
               path="/"
-              element={<Home floatData={floatData} themeChange={globalActions.themeChange} floating={globalActions.floatOpPress} />}
+              element={<Home floatData={floatData}
+              themeChange={globalActions.themeChange}
+              floating={globalActions.floatOpPress}
+              testAction={globalActions.panelFunction}
+              testState={testData}
+              />}
             />
             <Route path="/about" element={<About />} />
           </Routes>

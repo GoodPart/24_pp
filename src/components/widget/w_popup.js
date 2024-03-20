@@ -24,7 +24,7 @@ const PopupLayer = styled.div`
     transform: ${props => props.state ? `translate(${-props.x}px, ${-props.y}px)` : `translate(${0}, ${0})`};
     width : ${props => props.state ? 100 : 0}vw;
     height: ${props => props.state ? 100 : 0}vh;
-    transition: .4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: 2s cubic-bezier(0.22, 1, 0.36, 1);
     background: ${props => props.theme.white};
 
     

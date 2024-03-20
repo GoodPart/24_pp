@@ -15,12 +15,14 @@ export function PanelFlx({
   padding = 12,
   flexDirection = "row",
   justify = "start",
+  addClassName="",
   theme,
+  gap = "",
   children,
 }) {
   return (
     <PanelFlxWrap
-      className="show"
+      className={`show ${addClassName}`}
       flex={flex}
       width={width}
       height={height}
@@ -28,6 +30,7 @@ export function PanelFlx({
       flexDirection={flexDirection}
       justify={justify}
       theme={theme}
+      gap={gap}
     >
       {children}
     </PanelFlxWrap>
@@ -67,6 +70,7 @@ const PanelFlxWrap = styled.div`
   padding: ${(props) => props.padding}px;
   width: ${(props) => props.width - props.padding * 2}px;
   height: ${(props) => props.height - props.padding * 2}px;
+  gap : ${props=> props.gap}px;
   min-width: 100px;
   min-height: 100px;
   transform: scale(0);
@@ -77,6 +81,11 @@ const PanelFlxWrap = styled.div`
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: ${(props) => props.theme.borderColor};
+
+
+  &.exp {
+    position: absolute;
+  }
 
  & .show {
   &:hover {
@@ -163,16 +172,55 @@ export const PanelFlexInnerWrap = styled.div`
       width: calc(100% - 48px);
       /* height: ${(props) => (props.expanded ? "inherit" : props.height)}; */
     }
+
+    &.widgets {
+      flex-direction: row;
+      div:last-child {
+        flex: 1;
+      }
+    }
   }
 `;
 
 export const PanelFooterWrap = styled.div`
   display: flex;
   background-color: coral;
+
+  
 `;
 
 
-export const PanelChildPanelWrap = styled.div`
+// export const ExpandedPanel = styled.div`
+//   display: flex;
+//   flex-direction: ${(props) => props.direction};
+//   gap: 12px;
+//   background-color: ${props => props.theme.backgroundColorDepth2};
+//   width: 100px;
+//   height: 100px;
+//   border-radius: 12px;
+//   transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
+
+    
+
+
+//   &.exp {
+//     position: fixed;
+//     width: 100vw;
+//     height: 100vh;
+//     flex: 0;
+//     background: antiquewhite;
+//     transform: translate(-37px, -529px);
+//   }
+
+// `
+export function ExpandedPanel({ id,testState, children }) {
+  return <ExpPanel id={id} >
+      {children}
+  </ExpPanel>
+};
+
+const ExpPanel = styled.div`
+  position: relative;
   display: flex;
   flex-direction: ${(props) => props.direction};
   gap: 12px;
@@ -180,6 +228,15 @@ export const PanelChildPanelWrap = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 12px;
-  
+  transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* &.exp {
+    position : fixed;
+    width: 100vw;
+    height: 100vh;
+    flex: 0;
+    background: antiquewhite;
+    transform: translate(-37px, -529px);
+  } */
 
 `
