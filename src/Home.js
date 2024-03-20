@@ -62,14 +62,24 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
           <PanelFlexInnerWrap direction={"column"} expanded={true} className={"skills"}>
             <PanelFlx padding={24}>
               <PanelFlexInnerWrap direction={"row"} flexWrap={true} expanded={true} gap={10}>
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={html} />} />
+                {/* <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={html} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={css} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={js} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={nodejs} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={gulp} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={react} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={redux} />} />
+                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={redux} />} /> */}
+                <ExpandedPanel id="a1" testState={testState}><Pages id="a1" testState={testState} onclick={testAction} children={html} /></ExpandedPanel>
+                <ExpandedPanel id="a2" testState={testState}><Pages id="a2" testState={testState} onclick={testAction} children={css} /></ExpandedPanel>
                 <ExpandedPanel id="a3" testState={testState}><Pages id="a3" testState={testState} onclick={testAction} children={js} /></ExpandedPanel>
+                <ExpandedPanel id="a4" testState={testState}><Pages id="a4" testState={testState} onclick={testAction} children={nodejs} /></ExpandedPanel>
+                <ExpandedPanel id="a5" testState={testState}><Pages id="a5" testState={testState} onclick={testAction} children={gulp} /></ExpandedPanel>
+                <ExpandedPanel id="a6" testState={testState}><Pages id="a6" testState={testState} onclick={testAction} children={react} /></ExpandedPanel>
+                <ExpandedPanel id="a7" testState={testState}><Pages id="a7" testState={testState} onclick={testAction} children={redux} /></ExpandedPanel>
+                <ExpandedPanel id="a8" testState={testState}><Pages id="a8" testState={testState} onclick={testAction} children={mongodb} /></ExpandedPanel>
+                <ExpandedPanel id="a9" testState={testState}><Pages id="a9" testState={testState} onclick={testAction} children={firebase} /></ExpandedPanel>
+                <ExpandedPanel id="a10" testState={testState}><Pages id="a10" testState={testState} onclick={testAction} children={flutter} /></ExpandedPanel>
+                
 
             
         

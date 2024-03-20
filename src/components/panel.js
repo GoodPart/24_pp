@@ -226,8 +226,8 @@ const ExpPanel = styled.div`
   gap: 12px;
   background-color: ${props => props.theme.backgroundColor100};
   color: ${props => props.theme.textColor};
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  height: 125px;
   border-radius: 12px;
   transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
 
