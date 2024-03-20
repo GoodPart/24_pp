@@ -88,7 +88,7 @@ const InnerPage = styled.div`
 
     &.show {
         position: relative;
-        z-index: 999999;
+        z-index: 999;
         pointer-events: auto;
         opacity: 1;
         transition: opacity .4s 1s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -106,6 +106,6 @@ const CloseBtn = styled.button`
 
     &.show {
         display: block;
-
+        z-index: 9999;
     }
 `
