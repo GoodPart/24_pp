@@ -69,8 +69,7 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={gulp} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={react} />} />
                 <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={redux} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={mongodb} />} />
-                <PanelFlx padding={12} flex={0} children={<FloatWrap onclick={floating} state={false} data={firebase} />} />
+                <ExpandedPanel id="a3" testState={testState}><Pages id="a3" testState={testState} onclick={testAction} children={js} /></ExpandedPanel>
 
             
         
@@ -81,7 +80,7 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
           </PanelFlexInnerWrap>
         </PanelWrapper>
         
-        <PanelWrapper>
+        {/* <PanelWrapper>
           <PanelFlexInnerWrap direction={"column"} expanded={true}>
             <PanelFlx padding={24} gap={12}>
               <ExpandedPanel
@@ -101,7 +100,7 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
 
             </PanelFlx>
           </PanelFlexInnerWrap>
-        </PanelWrapper>
+        </PanelWrapper> */}
       </div>
       {/* <Popup floatData={floatData} onclick={floating} children={<div>{floatData.viewData.title}<br /> {floatData.viewData.desc}</div>} /> */}
     </div>

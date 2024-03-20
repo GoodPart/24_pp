@@ -4,7 +4,7 @@ export function Pages({ id, testState, onclick, children }) {
     const targetCheck = testState.id == id && testState.state ? true : false;
 
     return <PagesWrap id={id} testState={testState} className={targetCheck ? "exp" : ""}
-        onClick={(e) => {
+    onMouseDown={(e) => {
             if (targetCheck) {
                 
             } else {
@@ -14,6 +14,7 @@ export function Pages({ id, testState, onclick, children }) {
         }}
     >
         <img src={`${process.env.PUBLIC_URL}/logos/${children.img}`} />
+        {/* <h1>{ children.title}</h1> */}
         <InnerPage className={targetCheck ? "show" : ""}>
             <h1>{children.title}</h1>
             <div>
@@ -35,7 +36,14 @@ const PagesWrap = styled.div`
     width: inherit;
     height: inherit;
     background-color: ${props => props.theme.backgroundColor100};
-    transition: all .8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all .7s cubic-bezier(0.22, 1, 0.36, 1);
+
+    > h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
     img {
         position: absolute;
@@ -45,9 +53,9 @@ const PagesWrap = styled.div`
         pointer-events: none;
         width : calc(100% - 24px);
         height : calc(100% - 24px);
-        transition: all .8s cubic-bezier(0.22, 1, 0.36, 1);
-
+        transition: all .7s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
     &.exp {
         cursor: default;
         pointer-events: visible;
@@ -83,7 +91,8 @@ const InnerPage = styled.div`
     margin: 0 auto;
     width: 1200px;
     height: 100%;
-    background-color: ${props=> props.theme.backgroundColor100};
+    /* background-color: ${props => props.theme.backgroundColor100}; */
+    background-color: coral;
     transition: opacity .2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     &.show {
@@ -93,9 +102,7 @@ const InnerPage = styled.div`
         opacity: 1;
         transition: opacity .4s 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
-
 `
-
 const CloseBtn = styled.button`
     position: absolute;
     display: none;
