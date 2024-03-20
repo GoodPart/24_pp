@@ -224,9 +224,10 @@ const ExpPanel = styled.div`
   display: flex;
   flex-direction: ${(props) => props.direction};
   gap: 12px;
-  background-color: ${props => props.theme.backgroundColorDepth2};
-  width: 100px;
-  height: 100px;
+  background-color: ${props => props.theme.backgroundColor100};
+  /* padding: 12px; */
+  width: 150px;
+  height: 150px;
   border-radius: 12px;
   transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
 

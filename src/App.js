@@ -7,6 +7,7 @@ import styled, { ThemeProvider, DefaultTheme } from "styled-components";
 const darkTheme = {
   white : "#fff",
   textColor: "#ddd",
+  backgroundColor100 :"rgba(68, 68, 68, 1)", 
   backgroundColor: "rgba(68, 68, 68, 0.6)",
   backgroundColorDepth2: "rgba(68, 68, 68, 0.8)",
   linearGradientColor:
@@ -16,6 +17,7 @@ const darkTheme = {
 const lightTheme = {
   white: "#fff",
   textColor: "#444",
+  backgroundColor100 :"rgba(255, 255, 255, 1)", 
   backgroundColor: "rgba(255,255,255, 0.6)",
   backgroundColorDepth2: "rgba(255, 255, 255, 0.8)",
   linearGradientColor:

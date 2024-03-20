@@ -7,7 +7,7 @@ import ThemeWidget from "./components/widget/w_theme";
 import styled from "styled-components";
 import Today from "./components/widget/w_today";
 import FloatWrap from "./components/widget/w_float";
-import { Pages, html } from "./components/widget/skills/html";
+import { html } from "./components/widget/skills/html";
 import { css } from "./components/widget/skills/css";
 import { js } from "./components/widget/skills/js";
 import { nodejs } from "./components/widget/skills/node";
@@ -17,6 +17,7 @@ import { mongodb } from "./components/widget/skills/mongodb";
 import { firebase } from "./components/widget/skills/firebase";
 import { flutter } from "./components/widget/skills/flutter";
 import { gulp } from './components/widget/skills/glup';
+import { Pages } from "./components/widget/skills/w_route";
 
 
 
@@ -83,8 +84,18 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
         <PanelWrapper>
           <PanelFlexInnerWrap direction={"column"} expanded={true}>
             <PanelFlx padding={24} gap={12}>
-              <ExpandedPanel id="a1" testState={testState} children={<Pages id="a1" testState={testState} onclick={testAction} children={html} />} />
-              <ExpandedPanel id="a2" testState={testState} children={<Pages id="a2" testState={testState} onclick={testAction} children={css} />} />
+              <ExpandedPanel
+                id="a1"
+                testState={testState}
+              >
+                <Pages id="a1" testState={testState} onclick={testAction} children={html} />
+                </ExpandedPanel>
+              <ExpandedPanel
+                id="a2"
+                testState={testState}
+              >
+                <Pages id="a2" testState={testState} onclick={testAction} children={css} />
+              </ExpandedPanel>
 
 
 
