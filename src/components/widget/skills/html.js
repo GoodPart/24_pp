@@ -33,6 +33,7 @@ export function Pages({ id, testState, onclick, children }) {
 }
 
 const PagesWrap = styled.div`
+    z-index : 10;
     border-radius: 8px;
     cursor: pointer;
     position: fixed;
@@ -68,6 +69,15 @@ const PagesWrap = styled.div`
         }
     }
 
+
+    @keyframes ipornAppOpen {
+        0% {
+            z-index : 0;
+        }
+        100% {
+            z-index : 100;
+        }
+    }
     
 
     
