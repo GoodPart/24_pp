@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, ExpandedPanel, DetailPanel } from "./components/panel";
 import Buttons from "./components/widget/w_buttons";
-import WidgetProfile from "./components/widget/w_profil";
+import WidgetProfile, { Heading01 } from "./components/widget/w_profil";
 import ThemeWidget from "./components/widget/w_theme";
 import Today from "./components/widget/w_today";
 import { html } from "./components/widget/skills/html";
@@ -17,14 +17,17 @@ import { gulp } from './components/widget/skills/glup';
 import { Pages } from "./components/widget/skills/w_route";
 
 // 임시
-import { data } from './components/jsons/career';
+import { careerData } from './components/jsons/career';
 import { Career } from "./components/widget/career/w_career";
 
+import { referenceData } from "./components/jsons/reference";
 
 
 
 
-function Home({ floatData, themeChange, floating, testAction, testState }) {
+
+
+function Home({ themeChange,testAction, testState }) {
   const [theme, setTheme] = useState(false);
   const [detailView, setDetailView] = useState({
     state: false,
@@ -38,7 +41,6 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
         target : ""
       })
     } else {
-      console.log(target)
       setDetailView({
         state: !detailView.state,
         target : target
@@ -107,10 +109,10 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
         <PanelWrapper>
           <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"career"}>
             <PanelFlx padding={24} overflow={true}>
-              <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={10}>
-                <h1 className="">CAREER</h1>
+              <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={12}>
+                <Heading01 className="">CAREER</Heading01>
                 {
-                  Object.values(data).map((ele, index) => (<PanelFlx key={index} padding={24}>{<Career data={ele} onclick={toggleDetailView} />}</PanelFlx>))
+                  Object.values(careerData).map((ele, index) => (<PanelFlx key={index} padding={12}>{<Career data={ele} onclick={toggleDetailView} />}</PanelFlx>))
                 }
                 <DetailPanel className="next-view" data={detailView} onclick={toggleDetailView}>
                 </DetailPanel>
@@ -120,15 +122,16 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
           </PanelFlexInnerWrap>
           <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"career"}>
             <PanelFlx padding={24}>
-              <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={10}>
-                <h1 className="">REFERENCE</h1>
-
+              <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={12}>
+                <Heading01 className="">REFERENCE</Heading01>
+                {
+                  Object.values(referenceData).map((ele, index) => (<>{ ele.title}</>))
+                }
               </PanelFlexInnerWrap>
             </PanelFlx>
           </PanelFlexInnerWrap>
         </PanelWrapper>
       </div>
-      {/* <Popup floatData={floatData} onclick={floating} children={<div>{floatData.viewData.title}<br /> {floatData.viewData.desc}</div>} /> */}
     </div>
   );
 }

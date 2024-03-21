@@ -1,4 +1,4 @@
-export const data = [
+export const careerData = [
     {
         title: "야놀자",// 회사명
         rank: "대리",

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Home from "./Home";
 import About from "./about";
-import styled, { ThemeProvider, DefaultTheme } from "styled-components";
+import { ThemeProvider } from "styled-components";
 
 const darkTheme = {
   white: "#fff",
@@ -54,7 +54,7 @@ function App() {
   function floatOpPress({data : data}, e) {
     
     
-    if (data == "close") {
+    if (data === "close") {
       setFloatData({
         viewData: data,
         state: false,
@@ -78,7 +78,7 @@ function App() {
   }
   function panelFunction ({ data: data}, e){
     
-    if (data == "close") { 
+    if (data === "close") { 
       setTestData({
         viewData : data,
         state: false,
@@ -109,7 +109,7 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode ? lightTheme : darkTheme}>
-      <div className={`page-wrap ${themeMode == true ? "light" : "dark"}`}>
+      <div className={`page-wrap ${themeMode === true ? "light" : "dark"}`}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Navigation />
           <Routes>

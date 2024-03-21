@@ -94,8 +94,8 @@ const ProfileWrap = styled.div`
   }
 `;
 
-const Heading01 = styled.h1`
-  font-size: 32px;
+export const Heading01 = styled.h1`
+  font-size: 18px;
   color: ${(props) => props.theme.textColor};
   font-weight: 900;
   text-transform: uppercase;

@@ -260,22 +260,6 @@ export const NextView = styled.div`
   border-radius: 10px;
   border: ${(props) => props.theme.borderColor};
 
-
-  /* &:after {
-    z-index : 0;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width : 100%;
-    height: 100%;
-    background-color: rgba(255,255,255,0.56);
-    filter: blur(10px);
-  } */
-  
-
   &.show {
     left: 0;
   }

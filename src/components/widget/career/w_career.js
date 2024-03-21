@@ -33,7 +33,7 @@ const Wrapper = styled.div`
     /* position: relative; */
     display: flex;
     width : 100%;
-    gap: 24px;
+    gap: 12px;
 
     .detail-link {
         position: absolute;
@@ -53,7 +53,7 @@ const Wrapper = styled.div`
         height: 100%;
         border-width: 2px;
         border-style: solid;
-        border-color: ${props=> props.theme.point};
+        /* border-color: ${props=> props.theme.point}; */
         border-radius: 8px;
 
         span {
@@ -64,19 +64,19 @@ const Wrapper = styled.div`
     .company_icon {
         display: flex;
         padding : 12px;
-        background-color: ${props=> props.theme.point};
+        background-color: ${props => props.theme.textColor};
         border-radius: 8px;
         height: 60px;
         
         svg {
-            stroke:#fff;
+            stroke:${props => props.theme.backgroundColorDepth2};;
         }
     }
 
     dl {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 6px;
     }
     dt,dd {
         color: ${props => props.theme.textColor};
@@ -88,11 +88,11 @@ const Wrapper = styled.div`
         }
     }
     dt.title {
-        font-size : 28px;
-        font-weight: 900;
+        font-size : 26px;
+        font-weight: 700;
     }
     dl dd.heading_1 {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 500;
     }
     dl dd.heading_4 {
