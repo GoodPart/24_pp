@@ -34,7 +34,7 @@ const PagesWrap = styled.div`
     width: inherit;
     height: inherit;
     background-color: ${props => props.theme.backgroundColor100};
-    transition: all .7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
 
     &:hover {
         transform: scale(1.05);
@@ -130,8 +130,8 @@ const CloseBtn = styled.button`
     display: none;
     top: 10%;
     right: 10%;
-    width : 100px;
-    height: 100px;
+    width : 30px;
+    height: 30px;
 
     &.show {
         display: block;

@@ -125,7 +125,7 @@ function Home({ themeChange,testAction, testState }) {
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={12}>
                 <Heading01 className="">REFERENCE</Heading01>
                 {
-                  Object.values(referenceData).map((ele, index) => (<>{ ele.title}</>))
+                  Object.values(referenceData).map((ele, index) => (<div key={index}>{ ele.title}</div>))
                 }
               </PanelFlexInnerWrap>
             </PanelFlx>

@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 
 export function Career({ data, onclick }) {
-    const doList = Object.values(data.do).map((ele, index) => {
+
+    const doList = data.do && Object.values(data.do).map((ele, index) => {
         return <div className="do-list__item" key={index}>{ele}</div>
     })
     return <Wrapper className="career-wrap">
@@ -20,7 +21,11 @@ export function Career({ data, onclick }) {
             {/* <dd className="desc">{data.desc}</dd> */}
             <dd className="heading_1"><span>{data.rank}</span> | <span>{data.job}</span></dd>
             <dd className="heading_4 location"><a href={data.location.path} target="_blank"><img src={`${process.env.PUBLIC_URL}/images/location.svg`} width={24} /><span>{data.location.name}</span></a></dd>
-            <dd className="do-list">{doList}</dd>
+            <dd className="do-list">
+                <div>
+                {doList}
+                </div>
+            </dd>
         </dl>
         {/* <div>
             {data.since.from}
@@ -112,8 +117,12 @@ const Wrapper = styled.div`
     }
 
     .do-list {
-        display: flex;
-        gap: 8px;
+        > div {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+
+        }
     }
     .do-list__item {
         font-size : 12px;
