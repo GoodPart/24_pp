@@ -6,23 +6,28 @@ import styled, { ThemeProvider, DefaultTheme } from "styled-components";
 
 const darkTheme = {
   white : "#fff",
-  textColor: "#ddd",
+  point: "#eeaeca",
+  textColor: "#eee",
   backgroundColor100 :"rgba(68, 68, 68, 1)", 
   backgroundColor: "rgba(68, 68, 68, 0.6)",
   backgroundColorDepth2: "rgba(68, 68, 68, 0.8)",
   linearGradientColor:
     "linear-gradient(131deg,rgba(238, 174, 202, 1) 0%,rgba(148, 187, 233, 1) 100%)",
   borderColor: "1px solid rgba(255, 255, 255, 0.1)",
+  boxShadow: " 4px 4px 6px 0 rgba(255, 255, 255, 0.26), 1px 1px 4px 0 rgba(255, 255, 255, 0.26);"
 };
 const lightTheme = {
   white: "#fff",
-  textColor: "#444",
+  point: "#94bbe9",
+  textColor: "#333",
   backgroundColor100 :"rgba(255, 255, 255, 1)", 
   backgroundColor: "rgba(255,255,255, 0.6)",
   backgroundColorDepth2: "rgba(255, 255, 255, 0.8)",
   linearGradientColor:
     "#121212",
   borderColor: "1px solid rgba(68, 68, 68, 0.18)",
+  boxShadow: " 4px 4px 6px 0 rgba(0, 0, 0, 0.26), 1px 1px 4px 0 rgba(0, 0, 0, 0.26);"
+
 };
 
 function App() {

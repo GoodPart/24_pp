@@ -23,14 +23,14 @@ export function PanelFlx({
   return (
     <PanelFlxWrap
       className={`show ${addClassName}`}
-      flex={flex}
-      width={width}
-      height={height}
-      padding={padding}
-      flexDirection={flexDirection}
-      justify={justify}
+      $flex={flex}
+      $width={width}
+      $height={height}
+      $padding={padding}
+      $flexDirection={flexDirection}
+      $justify={justify}
       theme={theme}
-      gap={gap}
+      $gap={gap}
     >
       {children}
     </PanelFlxWrap>
@@ -38,6 +38,8 @@ export function PanelFlx({
 }
 
 export const PanelWrapper = styled.div`
+  position: relative;
+  z-index : 1;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -46,6 +48,9 @@ export const PanelWrapper = styled.div`
 
   & + div {
     padding-top: 0;
+  }
+  & + div {
+    z-index : 0
   }
 `;
 
@@ -64,13 +69,13 @@ const PanelWrap = styled.div`
 
 const PanelFlxWrap = styled.div`
   display: flex;
-  flex-direction: ${(props) => props.flexDirection};
-  justify-content: ${(props) => props.justify};
-  flex: ${(props) => props.flex};
-  padding: ${(props) => props.padding}px;
-  width: ${(props) => props.width - props.padding * 2}px;
-  height: ${(props) => props.height - props.padding * 2}px;
-  gap : ${props=> props.gap}px;
+  flex-direction: ${(props) => props.$flexDirection};
+  justify-content: ${(props) => props.$justify};
+  flex: ${(props) => props.$flex};
+  padding: ${(props) => props.$padding}px;
+  width: ${(props) => props.$width - props.$padding * 2}px;
+  height: ${(props) => props.$height - props.$padding * 2}px;
+  gap : ${props=> props.$gap}px;
   min-width: 100px;
   min-height: 100px;
   transform: scale(0);
@@ -156,21 +161,21 @@ const PanelFlxWrap = styled.div`
 
 export const PanelFlexInnerWrap = styled.div`
   display: flex;
-  flex: ${(props) => (props.expanded ? 1 : "none")};
-  flex-direction: ${(props) => props.direction};
-  flex-wrap: ${props=>props.flexWrap ? "wrap" : ""};
-  gap: ${props => props.gap ? props.gap : "12"}px;
+  flex: ${(props) => (props.$expanded ? 1 : "none")};
+  flex-direction: ${(props) => props.$direction};
+  flex-wrap: ${props=>props.$flexWrap ? "wrap" : ""};
+  gap: ${props => props.$gap ? props.$gap : "12"}px;
 
   > * {
-    width: ${(props) => (props.expanded ? "inherit" : props.width)};
-    height: ${(props) => (props.expanded ? "" : props.height)};
+    width: ${(props) => (props.$expanded ? "inherit" : props.width)};
+    height: ${(props) => (props.$expanded ? "" : props.height)};
   }
   @media (max-width: 767px) {
     width: 100%;
 
     > * {
       width: calc(100% - 48px);
-      /* height: ${(props) => (props.expanded ? "inherit" : props.height)}; */
+      /* height: ${(props) => (props.$expanded ? "inherit" : props.height)}; */
     }
 
     &.widgets {
@@ -213,7 +218,7 @@ export const PanelFooterWrap = styled.div`
 //   }
 
 // `
-export function ExpandedPanel({ id,testState, children }) {
+export function ExpandedPanel({ id, children }) {
   return <ExpPanel id={id} >
       {children}
   </ExpPanel>
