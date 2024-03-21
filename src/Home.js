@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, ExpandedPanel } from "./components/panel";
+import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, ExpandedPanel, DetailPanel } from "./components/panel";
 import Buttons from "./components/widget/w_buttons";
 import WidgetProfile from "./components/widget/w_profil";
 import ThemeWidget from "./components/widget/w_theme";
@@ -25,7 +25,27 @@ import { Career } from "./components/widget/career/w_career";
 
 
 function Home({ floatData, themeChange, floating, testAction, testState }) {
-  let [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(false);
+  const [detailView, setDetailView] = useState({
+    state: false,
+    target : ""
+  });
+
+  function toggleDetailView({action, target}) {
+    if (action == "close") {
+      setDetailView({
+        state: false,
+        target : ""
+      })
+    } else {
+      console.log(target)
+      setDetailView({
+        state: !detailView.state,
+        target : target
+      })
+    }
+  }
+
 
   
   return (
@@ -86,22 +106,23 @@ function Home({ floatData, themeChange, floating, testAction, testState }) {
         
         <PanelWrapper>
           <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"career"}>
-            <PanelFlx padding={24}>
+            <PanelFlx padding={24} overflow={true}>
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={10}>
-                <h1 class="">CAREER</h1>
+                <h1 className="">CAREER</h1>
                 {
-                  Object.values(data).map((ele, index) => (<PanelFlx key={index} padding={24}>{<Career data={ele} />}</PanelFlx>))
+                  Object.values(data).map((ele, index) => (<PanelFlx key={index} padding={24}>{<Career data={ele} onclick={toggleDetailView} />}</PanelFlx>))
                 }
+                <DetailPanel className="next-view" data={detailView} onclick={toggleDetailView}>
+                </DetailPanel>
+
               </PanelFlexInnerWrap>
             </PanelFlx>
           </PanelFlexInnerWrap>
           <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"career"}>
             <PanelFlx padding={24}>
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={10}>
-                <h1 class="">CAREER</h1>
-                {
-                  Object.values(data).map((ele, index) => (<PanelFlx key={index} padding={24}>{<Career data={ele} />}</PanelFlx>))
-                }
+                <h1 className="">REFERENCE</h1>
+
               </PanelFlexInnerWrap>
             </PanelFlx>
           </PanelFlexInnerWrap>

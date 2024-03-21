@@ -1,24 +1,31 @@
 import styled from "styled-components";
 
 
-export function Career({ data }) {
+export function Career({ data, onclick }) {
     const doList = Object.values(data.do).map((ele, index) => {
         return <div className="do-list__item" key={index}>{ele}</div>
     })
     return <Wrapper className="career-wrap">
         <div className="company_icon">
-            <img src={`${process.env.PUBLIC_URL}/images/company.svg`} width={60} />
+            <svg width="60px" height="60px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 20H21V10C21 8.89543 20.1046 8 19 8H15M11 16H11.01M17 16H17.01M7 16H7.01M11 12H11.01M17 12H17.01M7 12H7.01M11 8H11.01M7 8H7.01M15 20V6C15 4.89543 14.1046 4 13 4H5C3.89543 4 3 4.89543 3 6V20H15Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
         </div>
 
         {data.state ? <div className="stay"><span>재직중</span></div> : ""}
+        <button onClick={(e)=> onclick({data :"open", target : data})}> 디테일</button>
 
         <dl>
             <dt className="title">{data.title}</dt>
             {/* <dd className="desc">{data.desc}</dd> */}
-            <dd className="heading_1">직급 : <span>{data.rank}</span> | 담당 : <span>{data.job}</span></dd>
+            <dd className="heading_1"><span>{data.rank}</span> | <span>{data.job}</span></dd>
             <dd className="heading_4 location"><a href={data.location.path} target="_blank"><img src={`${process.env.PUBLIC_URL}/images/location.svg`} width={24} /><span>{data.location.name}</span></a></dd>
             <dd className="do-list">{doList}</dd>
         </dl>
+        {/* <div>
+            {data.since.from}
+        </div> */}
+
     </Wrapper>
 }
 
@@ -53,6 +60,9 @@ const Wrapper = styled.div`
         border-radius: 8px;
         height: 60px;
         
+        svg {
+            stroke:#fff;
+        }
     }
 
     dl {
@@ -71,10 +81,11 @@ const Wrapper = styled.div`
     }
     dt.title {
         font-size : 28px;
-        font-weight: bold;
+        font-weight: 900;
     }
     dl dd.heading_1 {
         font-size: 20px;
+        font-weight: 500;
     }
     dl dd.heading_4 {
         font-size: 14px;
@@ -100,10 +111,12 @@ const Wrapper = styled.div`
         font-size : 12px;
         padding: 4px 8px;
         border-radius: 12px;
-        border : 2px solid orange;
+        border : 2px solid ${props => props.theme.point};
+        background-color : ${props => props.theme.backgroundColor100};
         text-transform: uppercase;
         font-weight: bold;
     }
+
 
     @keyframes jumping {
         0% {

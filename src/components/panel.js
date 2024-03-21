@@ -15,7 +15,8 @@ export function PanelFlx({
   padding = 12,
   flexDirection = "row",
   justify = "start",
-  addClassName="",
+  addClassName = "",
+  overflow,
   theme,
   gap = "",
   children,
@@ -29,6 +30,7 @@ export function PanelFlx({
       $padding={padding}
       $flexDirection={flexDirection}
       $justify={justify}
+      $overflow={overflow}
       theme={theme}
       $gap={gap}
     >
@@ -100,9 +102,10 @@ const PanelFlxWrap = styled.div`
   
 
   &.show {
+    /* overflow: hidden; */
+    overflow: ${props=> props.$overflow ? "hidden" : ""};
     animation-name: showItem;
     animation-duration: 0.4s;
-    /* animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); */
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     animation-fill-mode: forwards;
     animation-direction: normal;
@@ -236,4 +239,44 @@ const ExpPanel = styled.div`
   border-radius: 12px;
   transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
 
+`
+
+export function DetailPanel({ data, onclick, children }) {
+  return <NextView className={data.state ? "show" : ""}>
+    <button onClick={(e) => onclick("close")}> 닫기</button>
+      {data.target ? data.target.desc : ""}
+  </NextView>
+}
+export const NextView = styled.div`
+  position: absolute;
+  top: 0;
+  left: 103%;
+  width : 100%;
+  height : 100%;
+  background-color: ${props => props.theme.backgroundColorDepth2};
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 10px;
+  border: ${(props) => props.theme.borderColor};
+
+
+  /* &:after {
+    z-index : 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width : 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.56);
+    filter: blur(10px);
+  } */
+  
+
+  &.show {
+    left: 0;
+  }
 `

@@ -5,7 +5,8 @@ import About from "./about";
 import styled, { ThemeProvider, DefaultTheme } from "styled-components";
 
 const darkTheme = {
-  white : "#fff",
+  white: "#fff",
+  white_2 : "#eee",
   point: "#eeaeca",
   textColor: "#eee",
   backgroundColor100 :"rgba(68, 68, 68, 1)", 
@@ -18,6 +19,7 @@ const darkTheme = {
 };
 const lightTheme = {
   white: "#fff",
+  white_2: "#eee",
   point: "#94bbe9",
   textColor: "#333",
   backgroundColor100 :"rgba(255, 255, 255, 1)", 
