@@ -12,7 +12,7 @@ export const careerData = [
             from: 2203,
             to: -1,
         },
-        do: ["html", "css(SASS, LESS)", "javascript", "gulp","figma", "jira", "slack"],
+        do: ["html", "css", "javascript", "gulp","figma", "jira", "slack"],
         desc: "",
         doWhat: [
             {
@@ -66,7 +66,7 @@ export const careerData = [
             from: 1801,
             to: 1903
         },
-        do: ["html", "css(SASS, LESS)", "Vue", "Node", "express","javascript", "gulp","sketch", "jira", "slack"],
+        do: ["html", "css", "javascript", "gulp", "Vue", "Node",  "sketch", "jira", "slack"],
         desc: "여기는 회사에서 수행한 일을 설명합니다.123123",
         doWhat: [
             {
@@ -112,7 +112,7 @@ export const careerData = [
             from: 1801,
             to: 1903
         },
-        do: ["html", "css(LESS)", "javascript", "python", "tensorflow", "photoshop", "Linux"],
+        do: ["html", "css", "javascript", "python", "tensorflow", "photoshop", "Linux"],
         desc: "여기는 회사에서 수행한 일을 설명합니다.123123",
         doWhat: [
             {

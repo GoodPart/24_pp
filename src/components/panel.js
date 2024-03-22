@@ -12,6 +12,7 @@ export function PanelFlx({
   flex = 1,
   width = 100,
   height = 100,
+  minHeight,
   padding = 12,
   flexDirection = "row",
   justify = "start",
@@ -28,6 +29,7 @@ export function PanelFlx({
       $width={width}
       $height={height}
       $padding={padding}
+      $minHeight={minHeight}
       $flexDirection={flexDirection}
       $justify={justify}
       $overflow={overflow}
@@ -76,10 +78,10 @@ const PanelFlxWrap = styled.div`
   flex: ${(props) => props.$flex};
   padding: ${(props) => props.$padding}px;
   width: ${(props) => props.$width - props.$padding * 2}px;
-  height: ${(props) => props.$height - props.$padding * 2}px;
+  height: ${(props) => props.$height == 'auto' ?props.$height : (props.$height - props.$padding * 2)+'px'};
   gap : ${props=> props.$gap}px;
   min-width: 100px;
-  min-height: 100px;
+  min-height: ${props => props.$minHeight == 'auto' ? props.$minHeight : '100px' };
   transform: scale(0);
   background: ${(props) => props.theme.backgroundColor};
   transition: background-color 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);

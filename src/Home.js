@@ -21,6 +21,10 @@ import { careerData } from './components/jsons/career';
 import { Career } from "./components/widget/career/w_career";
 
 import { referenceData } from "./components/jsons/reference";
+import { privateData, myData } from "./components/jsons/private";
+import { Label, LabelItemInlineDesc } from "./components/widget/w_label";
+
+
 
 
 
@@ -107,12 +111,12 @@ function Home({ themeChange,testAction, testState }) {
         </PanelWrapper>
         
         <PanelWrapper>
-          <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"career"}>
-            <PanelFlx padding={24} overflow={true}>
+          <PanelFlexInnerWrap $direction={"column"}  className={"career"}>
+            <PanelFlx padding={24} overflow={true}  width={564}>
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={12}>
                 <Heading01 className="">CAREER</Heading01>
                 {
-                  Object.values(careerData).map((ele, index) => (<PanelFlx key={index} padding={12}>{<Career data={ele} onclick={toggleDetailView} />}</PanelFlx>))
+                  Object.values(careerData).map((ele, index) => (<PanelFlx key={index} flex={0} minHeight={'auto'} height={'auto'} padding={12} >{<Career data={ele} onclick={toggleDetailView} />}</PanelFlx>))
                 }
                 <DetailPanel className="next-view" data={detailView} onclick={toggleDetailView}>
                 </DetailPanel>
@@ -120,12 +124,22 @@ function Home({ themeChange,testAction, testState }) {
               </PanelFlexInnerWrap>
             </PanelFlx>
           </PanelFlexInnerWrap>
-          <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"career"}>
-            <PanelFlx padding={24}>
+          <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"reference"}>
+            <PanelFlx padding={24} height={'auto'} flex={'none'}>
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={12}>
                 <Heading01 className="">REFERENCE</Heading01>
                 {
-                  Object.values(referenceData).map((ele, index) => (<div key={index}>{ ele.title}</div>))
+                  Object.values(referenceData).map((ele, index) => (<PanelFlx key={index} minHeight={'auto'}>
+                    <Label _path_="logos" imgName={ele.title} labelName={ele.title} size={12} /><LabelItemInlineDesc><a href={ele.path} target="_blank">{ele.path}</a></LabelItemInlineDesc>
+                  </PanelFlx>))
+                }
+              </PanelFlexInnerWrap>
+            </PanelFlx>
+            <PanelFlx padding={24} flex={1}>
+              <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={12}>
+                <Heading01 className="">etc</Heading01>
+                {
+                  Object.values(privateData).map((ele, index) => (<div key={index}>{ele.title} : {ele.desc}</div>))
                 }
               </PanelFlexInnerWrap>
             </PanelFlx>

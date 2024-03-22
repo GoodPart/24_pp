@@ -1,5 +1,5 @@
 export const nodejs = {
-    img: "nodejs.svg",
+    img: "node.svg",
     title: "Node js",
     data: [
         {
