@@ -24,6 +24,8 @@ import { referenceData } from "./components/jsons/reference";
 import { privateData, myData } from "./components/jsons/private";
 import { Label, LabelItemInlineDesc } from "./components/widget/w_label";
 
+import { Etc } from "./components/widget/etc/w_etc";
+
 
 
 
@@ -138,11 +140,33 @@ function Home({ themeChange,testAction, testState }) {
             <PanelFlx padding={24} flex={1}>
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={12}>
                 <Heading01 className="">etc</Heading01>
+                <Etc data={privateData} />
                 {
-                  Object.values(privateData).map((ele, index) => (<div key={index}>{ele.title} : {ele.desc}</div>))
+                  // Object.values(privateData).map((ele, index) => (<Etc key={index} data={ele}></Etc>))
                 }
               </PanelFlexInnerWrap>
             </PanelFlx>
+          </PanelFlexInnerWrap>
+        </PanelWrapper>
+        <PanelWrapper>
+          <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
+            <PanelFlx
+              flex={"inherit"}
+              width={400}
+              height={310}
+              padding={24}
+              theme={theme}
+              children={<Heading01 className="">peed</Heading01>}
+            />
+          </PanelFlexInnerWrap>
+          <PanelFlexInnerWrap $direction={"row"} className={"contact"} $expanded={true}>
+            <PanelFlx
+              flex={1}
+              height={310}
+              padding={24}
+              theme={theme}
+              children={<Heading01 className="">contact me</Heading01>}
+            />
           </PanelFlexInnerWrap>
         </PanelWrapper>
       </div>
