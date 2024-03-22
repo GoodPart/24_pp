@@ -111,23 +111,25 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode ? lightTheme : darkTheme}>
-      <div className={`page-wrap ${themeMode === true ? "light" : "dark"}`}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <Navigation />
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={<Home floatData={floatData}
-              themeChange={globalActions.themeChange}
-              floating={globalActions.floatOpPress}
-              testAction={globalActions.panelFunction}
-              testState={testData}
-              />}
-            />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </BrowserRouter>
+      <div className={`wrapper ${themeMode === true ? "light" : "dark"}`}>
+        <div className={`page-wrap`}>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <Navigation />
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={<Home floatData={floatData}
+                  themeChange={globalActions.themeChange}
+                  floating={globalActions.floatOpPress}
+                  testAction={globalActions.panelFunction}
+                  testState={testData}
+                />}
+              />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </div>
     </ThemeProvider>
   );

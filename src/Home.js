@@ -70,7 +70,7 @@ function Home({ themeChange,testAction, testState }) {
           </PanelFlexInnerWrap>
           <PanelFlexInnerWrap $direction={"column"} className={"widgets"}>
             <PanelFlx
-              padding={24}
+              padding={24.5}
               flex={0}
               flexDirection={"column"}
               justify={"space-between"}
@@ -79,7 +79,7 @@ function Home({ themeChange,testAction, testState }) {
               <Buttons title={"테마"} onclick={themeChange} />
             </PanelFlx>
             <PanelFlx
-              padding={24}
+              padding={24.5}
               flex={0}
               children={<Today />}
               flexDirection={"column"}
