@@ -112,6 +112,7 @@ function App() {
   return (
     <ThemeProvider theme={themeMode ? lightTheme : darkTheme}>
       <div className={`wrapper ${themeMode === true ? "light" : "dark"}`}>
+        <img src="https://x86.co.kr/files/attach/images/4439914/561/100/005/3eb1966e9e13dd661841bcc23827e867.jpg" />
         <div className={`page-wrap`}>
           <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Navigation />

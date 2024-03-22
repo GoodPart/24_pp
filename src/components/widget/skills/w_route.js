@@ -37,7 +37,7 @@ const PagesWrap = styled.div`
     transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
 
     &:hover {
-        transform: scale(1.05);
+        /* transform: scale(1.05); */
         /* background: ${props => props.theme.linearGradientColor}; */
     }
 

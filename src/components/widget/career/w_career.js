@@ -47,6 +47,7 @@ const Wrapper = styled.div`
     .wrap__item {
         display: flex;
         justify-content: space-between;
+        width : 100%;
 
         &:first-child div:first-child {
             display: flex;
@@ -139,6 +140,7 @@ const Wrapper = styled.div`
         border-style: solid;
         border-color: ${props => props.theme.borderColor};
         padding-top : 12px;
+        width : 100%;
         > div {
             display: flex;
             flex-wrap: wrap;
