@@ -23,6 +23,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 
+app.get('/', (req, res) => {
+    res.send('hi too')
+})
 
 app.post('/api/requestmail', async (req, res) => {
 
