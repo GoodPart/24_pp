@@ -57,6 +57,30 @@ const Wrap = styled.div`
         }
       
     }
+
+    @media (max-width : 1400px) and (min-width : 768px) {
+        flex: auto;
+        overflow-y: scroll;
+        height: 300px;
+        
+        
+        * {
+            box-shadow: none;
+        }
+    }
+    @media (max-width: 767px) {
+        flex: auto;
+        overflow-y: scroll;
+        width: 100%;
+        height: 500px;
+        .desc {
+            min-height: 30px;
+        }
+        * {
+            box-shadow: none;
+        }
+    }
+    
 `
 const Item = styled.div`
     flex: 1;

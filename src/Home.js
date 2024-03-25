@@ -26,6 +26,8 @@ import { Label, LabelItemInlineDesc } from "./components/widget/w_label";
 
 import { Etc } from "./components/widget/etc/w_etc";
 
+import Contact from "./components/widget/contact/contact"
+
 
 
 
@@ -146,24 +148,29 @@ function Home({ themeChange,testAction, testState }) {
           </PanelFlexInnerWrap>
         </PanelWrapper>
         <PanelWrapper>
-          <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
+          {/* <PanelFlexInnerWrap $direction={"row"} className={"my self"} $expanded={true}>
             <PanelFlx
-              flex={"inherit"}
-              width={400}
+              flex={1}
+              // width={400}
               height={310}
               padding={24}
               theme={theme}
-              children={<Heading01 className="">peed</Heading01>}
+              children={<Heading01 className="">my self</Heading01>}
             />
-          </PanelFlexInnerWrap>
+          </PanelFlexInnerWrap> */}
           <PanelFlexInnerWrap $direction={"row"} className={"contact"} $expanded={true}>
             <PanelFlx
               flex={1}
               height={310}
               padding={24}
               theme={theme}
-              children={<Heading01 className="">contact me</Heading01>}
-            />
+            >
+              <PanelFlexInnerWrap $direction={"column"}  $expanded={true} $gap={12}>
+                <Heading01 className="">contact me</Heading01>
+                <Contact />
+
+              </PanelFlexInnerWrap>
+              </PanelFlx>
           </PanelFlexInnerWrap>
         </PanelWrapper>
       </div>
