@@ -4,7 +4,8 @@ import styled from "styled-components"
 import axios from "axios"
 
 export default function Contact() {
-    const POST_URL = process.env.REACT_APP_DEV_SERVER_IP;
+    //개발시 REACT_APP_DEV_SERVER_IP 로 변경 
+    const POST_URL = process.env.REACT_APP_SERVER_IP;
     const [titleState, setTitleState] = useState('');
     const [descState, setDescState] = useState('');
 

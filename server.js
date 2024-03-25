@@ -15,7 +15,7 @@ const testEnv = {
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 app.use(cors({
-    origin: process.env.REACT_APP_DEV_CORS_SERVER_IP,
+    origin: process.env.REACT_APP_DEPLOY_SERVER_IP,
     credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
