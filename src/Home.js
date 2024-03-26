@@ -49,6 +49,7 @@ function Home({ themeChange,testAction, testState }) {
         target : ""
       })
     } else {
+
       setDetailView({
         state: !detailView.state,
         target : target
@@ -60,7 +61,7 @@ function Home({ themeChange,testAction, testState }) {
   
   return (
     <div className="main">
-      <div className="skill-wrap">
+      <div className="">
         <PanelWrapper>
           <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
             <PanelFlx
@@ -95,7 +96,6 @@ function Home({ themeChange,testAction, testState }) {
               <PanelFlexInnerWrap $direction={"row"} $flexWrap={true} $expanded={true} $gap={10}>
                 <ExpandedPanel id="a1">
                   <Pages id="a1" testState={testState} onclick={testAction} children={html} />
-                  <div>ㅁㄴㅇ</div>
                 </ExpandedPanel>
                 <ExpandedPanel id="a2"><Pages id="a2" testState={testState} onclick={testAction} children={css} /></ExpandedPanel>
                 <ExpandedPanel id="a3"><Pages id="a3" testState={testState} onclick={testAction} children={js} /></ExpandedPanel>
@@ -113,7 +113,7 @@ function Home({ themeChange,testAction, testState }) {
           </PanelFlexInnerWrap>
         </PanelWrapper>
         
-        <PanelWrapper>
+        <PanelWrapper className="deep2">
           <PanelFlexInnerWrap $direction={"column"}   $expanded={true}  className={"career"}>
             <PanelFlx padding={24} overflow={true} >
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={8}>

@@ -37,10 +37,6 @@ const PagesWrap = styled.div`
     background-color: ${props => props.theme.backgroundColor100};
     transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
 
-    &:hover {
-        /* background: ${props => props.theme.linearGradientColor}; */
-    }
-
     > h1 {
         position: absolute;
         top: 50%;

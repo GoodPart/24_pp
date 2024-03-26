@@ -89,13 +89,14 @@ function App() {
         windowCalcData: "",
         id: ""
       })
+      document.body.removeAttribute("style");
     } else {
      
       //window.scrollY - getY 만큼 스크롤 이동
       let currentScrollY = window.scrollY;
       let topPositionCheck = e.currentTarget.getBoundingClientRect().top < 0;
-      console.log(e.currentTarget.getBoundingClientRect())
-      console.log(window.scrollY)
+      // console.log(e.currentTarget.getBoundingClientRect())
+      // console.log(window.scrollY)
 
       if (topPositionCheck) {
         window.scrollTo({
@@ -113,6 +114,8 @@ function App() {
         windowCalcData: windowData,
         id: e.currentTarget.id
       })
+        document.body.style.overflow = "hidden";
+
 
 
     }

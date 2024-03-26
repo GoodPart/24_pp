@@ -2,9 +2,7 @@ import styled from "styled-components";
 import { Label } from "../w_label";
 
 export function Career({ data, onclick }) {
-    const goDetail = () => {
-        return data.rank === "고등학교" || data.rank === "대학교" ? false : true 
-    }
+    
 
     
     const doList = data.do && Object.values(data.do).map((ele, index) => {
@@ -163,6 +161,26 @@ const Wrapper = styled.div`
         padding: 4px 6px;
         text-transform: uppercase;
         font-weight: 600;
+    }
+
+
+
+    @media (max-width : 1023px) and (min-width : 768px) {
+      .wrap__item {
+            &:first-child div:first-child .company_icon {
+                display: none;
+
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        .wrap__item {
+            &:first-child div:first-child .company_icon {
+                display: none;
+
+            }
+        }
+     
     }
 
 

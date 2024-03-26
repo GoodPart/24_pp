@@ -208,6 +208,17 @@ body,
   .page-wrap {
     height: auto;
   }
+  .deep2 {
+    flex-direction: column;
+  }
+  .deep2 .career .show .show:not(.next-view),
+  .deep2 .reference .show .show {
+    width: calc(100% - 32px);
+  }
+  .deep2 .next-view {
+    width: calc(100% - 48px);
+    padding: 48px 24px;
+  }
 }
 
 

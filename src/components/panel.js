@@ -198,30 +198,6 @@ export const PanelFooterWrap = styled.div`
   
 `;
 
-
-// export const ExpandedPanel = styled.div`
-//   display: flex;
-//   flex-direction: ${(props) => props.direction};
-//   gap: 12px;
-//   background-color: ${props => props.theme.backgroundColorDepth2};
-//   width: 100px;
-//   height: 100px;
-//   border-radius: 12px;
-//   transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
-
-    
-
-
-//   &.exp {
-//     position: fixed;
-//     width: 100vw;
-//     height: 100vh;
-//     flex: 0;
-//     background: antiquewhite;
-//     transform: translate(-37px, -529px);
-//   }
-
-// `
 export function ExpandedPanel({ id, children }) {
   return <ExpPanel id={id} >
       {children}
@@ -240,17 +216,17 @@ const ExpPanel = styled.div`
   border-radius: 12px;
   transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
 
-  @media (max-width : 1023px) and (min-width : 768px) {
-    width : 80px;
-    height : 80px
+  @media (max-width : 1330px) and (min-width : 768px) {
+    width : 60px;
+    /* height : 80px; */
   }
-  @media (max-width: 767px) {
-    width : 80px
+  @media  (max-width: 767px) {
+    /* width :  */
   }
 
 `
 
-export function DetailPanel({ data, onclick, children }) {
+export function DetailPanel({className, data, onclick, children }) {
   const _this = data;
   
   const getInfo = _this.target.doWhat != null ? Object.values(_this.target.doWhat).map((ele, index) => {
@@ -274,7 +250,7 @@ export function DetailPanel({ data, onclick, children }) {
   }
   
     
-  return <NextView className={data.state ? "show" : ""}>
+  return <NextView className={data.state ? `show ${className}` : className}>
     <button className="detail-link" onClick={(e) => onclick({ data: "close", target: data })}> <img src={`${process.env.PUBLIC_URL}/next.png`} /></button>
 
     <dl>
