@@ -35,10 +35,23 @@ export default function Contact() {
             }
         }).catch(error => console.log("error", error))
     }
+   
+    const tempSendMail = () => {
+        setTitleState("");
+        setDescState("");
+        setMailRequest(true);
+        
+        setTimeout(() => {
+            setMailRequest(false);  
+            alert(`메일 서버 구축 전 입니다.\nEmail - ${titleState}\nDescription - ${descState}`);
+            clearTimeout(this)
+        }, 2000)
+        
+    }
     return <Wrap>
         <LabelTextField labelName="Email" id="email" onChange={titleOnChange} value={titleState} />
         <LabelTextField labelName="Description" id="desc" onChange={descOnChange} value={descState} />
-        <Submit onClick={sendMail}>{mailRequest ? "보내는중..." : "보내기" }</Submit>
+        <Submit onClick={tempSendMail}>{mailRequest ? "보내는중..." : "보내기" }</Submit>
 
     </Wrap>
 }
@@ -70,4 +83,6 @@ const Submit = styled.button`
     padding: 24px;
     border-radius : 8px;
     border: none;
+    background-color: ${props => props.theme.backgroundColorDepth2};
+    color : ${props => props.theme.textColor};
 `

@@ -117,10 +117,10 @@ function Home({ themeChange,testAction, testState }) {
         <PanelWrapper>
           <PanelFlexInnerWrap $direction={"column"}   $expanded={true}  className={"career"}>
             <PanelFlx padding={24} overflow={true} >
-              <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={18}>
+              <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={8}>
                 <Heading01 className="">CAREER</Heading01>
                 {
-                  Object.values(careerData).map((ele, index) => (<PanelFlx key={index} flex={0} minHeight={'auto'} height={'auto'} padding={24} >{<Career data={ele} onclick={toggleDetailView} />}</PanelFlx>))
+                  Object.values(careerData).map((ele, index) => (<PanelFlx key={index} flex={0} minHeight={'auto'} height={'auto'} padding={16} >{<Career data={ele} onclick={toggleDetailView} />}</PanelFlx>))
                 }
                 <DetailPanel className="next-view" data={detailView} onclick={toggleDetailView}>
                 </DetailPanel>

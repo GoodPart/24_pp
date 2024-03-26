@@ -13,7 +13,7 @@ export const careerData = [
             to: -1,
         },
         do: ["html", "css", "javascript", "gulp","figma", "jira", "slack"],
-        desc: "",
+        desc: "위성기반 솔루션 사업을 진행하며, 지도 및 백오피스와 대시보드 작업이 주된 업무입니다.\n인터렉션과 필요한 기능을 개발해 가이드 문서와 함께 배포했습니다.",
         doWhat: [
             {
                 title: "APISS(가명)",
@@ -67,13 +67,14 @@ export const careerData = [
             to: 1903
         },
         do: ["html", "css", "javascript", "gulp", "Vue", "Node",  "sketch", "jira", "slack"],
-        desc: "여기는 회사에서 수행한 일을 설명합니다.123123",
+        desc: "에이전시 회사로, 구축과 운영 및 유지보수가 주된 업무입니다.\n에이전시 특성상 기간이 촉박하기 때문에 기획자, 디자이너, 개발자와의 소통이 중요했습니다.",
         doWhat: [
             {
                 title: "LG(지인몰, 하우시스) 운영 및 유지보수",
                 since: 12,
                 do: [
                     "지인몰과 하우시스에 대한 이벤트 기획전의 운영 및 유지보수 진행",
+                    "일정 관리 및 이슈 해결 (일정 관리를 위해 JIRA외, Trello를 사용)"
                 ]
             },
             {
@@ -113,7 +114,7 @@ export const careerData = [
             to: 1903
         },
         do: ["html", "css", "javascript", "python", "tensorflow", "photoshop", "Linux"],
-        desc: "여기는 회사에서 수행한 일을 설명합니다.123123",
+        desc: "첫 입사 회사로, AI기반 솔루션 회사입니다.\n디자인툴 활용이 가능했기에, 해양 경찰청 내부 통합 홈페이지의 디자인과 퍼블리싱을 병행했습니다.\n파이썬을 이용한 연구 과제에 참여할 기회가 생겨, 온보딩과 연구개발을 병행하며 진행할 수 있는 경험을 했습니다.",
         doWhat: [
             {
                 title: "월면 크레이터 자동인식 시스템 개발",

@@ -5,7 +5,7 @@ import { PanelFlx } from "../../panel";
 
 export function Etc({ data }) {
     const d = Object.values(data).map((ele, index) => (
-        <PanelFlx width={200} height={'auto'} padding={24} flex={'auto'} justify="space-between" flexDirection="column" key={index}>
+        <PanelFlx width={200} height={'auto'} padding={18} flex={'auto'} justify="space-between" flexDirection="column" key={index}>
             <div>
                 <div className="title">{ele.title}</div>
                 <div className="desc">{ele.desc}</div>
@@ -23,19 +23,19 @@ const Wrap = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 12px;
+    gap: 8px;
 
     .title {
-        font-size: 24px;
+        font-size: 16px;
         font-weight: 700;
         color: ${props => props.theme.textColor};
 
     }
     .desc {
         margin-top: 12px;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 1.25rem;
-        min-height: 80px;
+        padding-bottom: 12px;
         color: ${props => props.theme.textColor};
     }
     .function__wrap {

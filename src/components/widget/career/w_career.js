@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { Label } from "../w_label";
 
 export function Career({ data, onclick }) {
+    const goDetail = () => {
+        return data.rank === "고등학교" || data.rank === "대학교" ? false : true 
+    }
 
+    
     const doList = data.do && Object.values(data.do).map((ele, index) => {
         return <div className="do-list__item" key={index}>
             <Label _path_="logos" imgName={ele} labelName={ele} size={12} />
@@ -24,8 +28,12 @@ export function Career({ data, onclick }) {
                 </dl>
             </div>
             <div>
-                <div className="stay"><span>{data.state ?"재직중" : "퇴사"}</span></div>
-                <button className="detail-link" onClick={(e) => onclick({ data: "open", target: data })}><img src={`${process.env.PUBLIC_URL}/next.png`} /></button>
+                <div className="stay">
+                    {data.rank === "고등학교" || data.rank === "대학교" ? <span>졸업</span> : <span>{data.state ? "재직중" : "퇴사"}</span>} 
+                </div>
+                {
+                    data.rank === "고등학교" || data.rank === "대학교" ? "" : <button className="detail-link" onClick={(e) => onclick({ data: "open", target: data })}><img src={`${process.env.PUBLIC_URL}/next.png`} /></button>
+                }
             </div>
         </div>
         <div className="wrap__item">

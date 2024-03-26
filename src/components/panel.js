@@ -244,17 +244,48 @@ const ExpPanel = styled.div`
 `
 
 export function DetailPanel({ data, onclick, children }) {
+  const _this = data;
+  
+  const getInfo = _this.target.doWhat != null ? Object.values(_this.target.doWhat).map((ele, index) => {
+
+    const _since = ele.since == -1 ? "진행중" : ele.since + "개월"
+    const _do = ele.do.map((t, index) => {
+      return <p key={index}>{t}</p>
+    })
+
+    return (
+      <div key={index}>
+        <dt># {ele.title}, {_since}</dt>
+        <dd>{_do}</dd>
+      </div>
+    )
+  }) : "loading...";
+    
   return <NextView className={data.state ? "show" : ""}>
-    <button onClick={(e) => onclick("close")}> 닫기</button>
-      {data.target ? data.target.desc : ""}
+    <button className="detail-link" onClick={(e) => onclick({ data: "close", target: data })}> <img src={`${process.env.PUBLIC_URL}/next.png`} /></button>
+
+    <dl>
+      <dt className="title"><span>{_this.target.title}</span> - <span>{_this.target.state ? "재직중" : "퇴사"}</span></dt>
+      <dd className="heading_1"><span>{_this.target.rank}</span> | <span>{_this.target.job}</span></dd>
+      <dd>{ _this.target.desc}</dd>
+      {/* <dd className="heading_4 location"><a href={_this.target.location.path} target="_blank"><img src={`${process.env.PUBLIC_URL}/images/location.svg`} width={16} /><span>{_this.target.location.name}</span></a></dd> */}
+    </dl>
+    
+    <dl className="do-infomation">
+      {getInfo}
+    </dl>
+
+
+      
   </NextView>
 }
 export const NextView = styled.div`
   position: absolute;
   top: 0;
   left: 103%;
-  width : 100%;
-  height : 100%;
+  padding: 48px 48px 24px;
+  width : calc(100% - 96px);
+  height : calc(100% - 72px);
   background-color: ${props => props.theme.backgroundColorDepth2};
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -265,4 +296,101 @@ export const NextView = styled.div`
   &.show {
     left: 0;
   }
+
+  .detail-link {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      padding: 4px 12px;
+      transform: rotate(180deg);
+
+      img {
+          width : 24px;
+          animation-name: arrow;
+          animation-duration: .6s;
+          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          filter: ${props => props.theme.invert};
+      }
+
+  }
+  dl {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    dt,dd {
+        color: ${props => props.theme.textColor};
+        
+        a {
+            /* text-decoration: none; */
+            color: inherit
+
+        }
+    }
+    dt.title {
+        font-size : 20px;
+        font-weight: 900;
+    }
+    dl dd.heading_1 {
+        font-size: 14px;
+        font-weight: 500;
+    }
+    dl dd.heading_4 {
+        font-size: 14px;
+    }
+    dl dd.location a{
+        display: inline-flex;
+        align-items: center;
+        &:hover {
+            img {
+                animation-name: jumping;
+                animation-duration: .4s;
+                animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+        }
+    }
+
+    dl.do-infomation {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      dt {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      dd {
+        padding-left: 8px;
+        
+      }
+      dd p{
+        position: relative;
+
+        & + p {
+          margin-top: 4px;
+        }
+
+        &:before {
+          content: '-';
+          display: inline-block;
+          margin-right: 4px;
+          font-weight: bold;
+        }
+      }
+      
+    }
 `
