@@ -14,7 +14,6 @@ export function Pages({ id, testState, onclick, children }) {
         }}
     >
         <img src={`${process.env.PUBLIC_URL}/logos/${children.img}`} />
-        {/* <h1>{ children.title}</h1> */}
         <InnerPage className={targetCheck ? "show" : ""}>
             <CloseBtn className={targetCheck ? "show" : ""} onMouseDown={() => onclick({ data: "close" })}>닫기</CloseBtn>
 
@@ -35,7 +34,7 @@ const PagesWrap = styled.div`
     width: inherit;
     height: inherit;
     background-color: ${props => props.theme.backgroundColor100};
-    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: width .8s cubic-bezier(0.22, 1, 0.36, 1), height .8s cubic-bezier(0.22, 1, 0.36, 1), transform .8s cubic-bezier(0.22, 1, 0.36, 1), z-index .8s cubic-bezier(0.22, 1, 0.36, 1) ;
 
     > h1 {
         position: absolute;

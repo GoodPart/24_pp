@@ -96,12 +96,6 @@ const PanelFlxWrap = styled.div`
     position: absolute;
   }
 
- & .show {
-  &:hover {
-  }
- }
-
-  
 
   &.show {
     overflow: ${props=> props.$overflow ? "hidden" : ""};
@@ -251,7 +245,7 @@ export function DetailPanel({className, data, onclick, children }) {
   
     
   return <NextView className={data.state ? `show ${className}` : className}>
-    <button className="detail-link" onClick={(e) => onclick({ data: "close", target: data })}> <img src={`${process.env.PUBLIC_URL}/next.png`} /></button>
+    <button className="detail-link" onClick={(e) => onclick({ data: "close", target: _this.target })}> <img src={`${process.env.PUBLIC_URL}/next.png`} /></button>
 
     <dl>
       <dt className="title">

@@ -37,6 +37,26 @@ export default function WidgetProfile({ thumbnail, name, age }) {
   );
 }
 
+export const WidgetProfileDesc = ({ })=> {
+  return (
+    <div>
+      안녕하세요, 프론트 공부중인 퍼블리셔 박경수입니다.
+      <br />
+      대한민국 남자의 의무를 마치고 뒤늦게 시작한 공부가<br />
+      운이좋게 적성에 맞아 어느덧 7년이 되어가네요.<br />
+      <br />
+      처음은 단순히 이쁜 디자인을 화면에 옮기는것에 흥미를 느껴 시작했지만,<br />
+      지금은 인터렉션과 비즈니스 로직 및 상태관리 방법 등을 고민하고 있습니다.<br />
+      <br />
+      제 업무의 대부분은 퍼블리싱이지만 프론트엔드 개발자가 되길 희망합니다.<br />
+      그래서, 기회가 온다면 놓치지 않기 위해 지속적인 토이 프로젝트를 진행하며 노력하고 있습니다.<br />
+      <br />
+      
+
+    </div>
+  )
+}
+
 const ProfileWrap = styled.div`
   opacity: 0;
   display: flex;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, ExpandedPanel, DetailPanel } from "./components/panel";
 import Buttons from "./components/widget/w_buttons";
-import WidgetProfile, { Heading01 } from "./components/widget/w_profil";
+import WidgetProfile, { Heading01, WidgetProfileDesc } from "./components/widget/w_profil";
 import ThemeWidget from "./components/widget/w_theme";
 import Today from "./components/widget/w_today";
 import { html } from "./components/widget/skills/html";
@@ -46,7 +46,7 @@ function Home({ themeChange,testAction, testState }) {
     if (action == "close") {
       setDetailView({
         state: false,
-        target : ""
+        target : target
       })
     } else {
 
@@ -71,6 +71,16 @@ function Home({ themeChange,testAction, testState }) {
               padding={24}
               theme={theme}
               children={<WidgetProfile />}
+            />
+          </PanelFlexInnerWrap>
+          <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
+            <PanelFlx
+              flex={"inherit"}
+              width={700}
+              height={310}
+              padding={24}
+              theme={theme}
+              children={<WidgetProfileDesc />}
             />
           </PanelFlexInnerWrap>
           <PanelFlexInnerWrap $direction={"column"} className={"widgets"}>
