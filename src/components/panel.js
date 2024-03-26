@@ -104,7 +104,6 @@ const PanelFlxWrap = styled.div`
   
 
   &.show {
-    /* overflow: hidden; */
     overflow: ${props=> props.$overflow ? "hidden" : ""};
     animation-name: showItem;
     animation-duration: 0.4s;
@@ -241,6 +240,14 @@ const ExpPanel = styled.div`
   border-radius: 12px;
   transition: .7s cubic-bezier(0.22, 1, 0.36, 1);
 
+  @media (max-width : 1023px) and (min-width : 768px) {
+    width : 80px;
+    height : 80px
+  }
+  @media (max-width: 767px) {
+    width : 80px
+  }
+
 `
 
 export function DetailPanel({ data, onclick, children }) {
@@ -260,15 +267,24 @@ export function DetailPanel({ data, onclick, children }) {
       </div>
     )
   }) : "loading...";
+
+  const splitDate = ({since}) => {
+    let changeType = String(since);
+    return changeType.slice(0, 2) + '.' + changeType.slice(2)
+  }
+  
     
   return <NextView className={data.state ? "show" : ""}>
     <button className="detail-link" onClick={(e) => onclick({ data: "close", target: data })}> <img src={`${process.env.PUBLIC_URL}/next.png`} /></button>
 
     <dl>
-      <dt className="title"><span>{_this.target.title}</span> - <span>{_this.target.state ? "재직중" : "퇴사"}</span></dt>
+      <dt className="title">
+        <div>{_this.target.title}</div>
+        {_this.target.since ? <div>{splitDate({ since: _this.target.since.from })} ~ {_this.target.since.to === -1 ? "재직중" : `퇴사(${splitDate({ since: _this.target.since.to })})`}</div> : ""}
+        
+      </dt>
       <dd className="heading_1"><span>{_this.target.rank}</span> | <span>{_this.target.job}</span></dd>
       <dd>{ _this.target.desc}</dd>
-      {/* <dd className="heading_4 location"><a href={_this.target.location.path} target="_blank"><img src={`${process.env.PUBLIC_URL}/images/location.svg`} width={16} /><span>{_this.target.location.name}</span></a></dd> */}
     </dl>
     
     <dl className="do-infomation">
@@ -333,8 +349,15 @@ export const NextView = styled.div`
         }
     }
     dt.title {
+        display: flex;
+        justify-content: space-between;
         font-size : 20px;
         font-weight: 900;
+
+        div:last-child {
+          font-size :14px;
+          /* font-weight : 500; */
+        }
     }
     dl dd.heading_1 {
         font-size: 14px;
@@ -342,6 +365,13 @@ export const NextView = styled.div`
     }
     dl dd.heading_4 {
         font-size: 14px;
+    }
+    dl dd {
+      padding: 12px;
+      font-size: 14px;
+      color : #444;
+      background-color: #ededed;
+      border-radius: 8px;
     }
     dl dd.location a{
         display: inline-flex;
@@ -374,7 +404,11 @@ export const NextView = styled.div`
         font-weight: 700;
       }
       dd {
-        padding-left: 8px;
+        padding: 12px;
+        font-size: 14px;
+        color : #444;
+        background-color: #ededed;
+        border-radius: 8px;
         
       }
       dd p{

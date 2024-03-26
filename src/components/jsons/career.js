@@ -25,7 +25,7 @@ export const careerData = [
                 do: [
                     "위성영상 기반 대민지원 홈페이지 구축",
                     "UI.UX 및 기능 개발",
-                    "필요한 기능을 모듈(class)화 및 문서화하여 개발팀 배포 및 업데이트",
+                    "필요한 기능을 모듈화 및 문서화하여 개발팀 배포 및 업데이트",
                     "그리드 및 차트 라이브러리 활용",
                     "프론트엔트 환경 구성 준비(front - React, back - spring)"
                 ]
@@ -63,8 +63,8 @@ export const careerData = [
         },
         state: false,
         since: {
-            from: 1801,
-            to: 1903
+            from: 1903,
+            to: 2202
         },
         do: ["html", "css", "javascript", "gulp", "Vue", "Node",  "sketch", "jira", "slack"],
         desc: "에이전시 회사로, 구축과 운영 및 유지보수가 주된 업무입니다.\n에이전시 특성상 기간이 촉박하기 때문에 기획자, 디자이너, 개발자와의 소통이 중요했습니다.",

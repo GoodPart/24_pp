@@ -93,7 +93,10 @@ function Home({ themeChange,testAction, testState }) {
           <PanelFlexInnerWrap $direction={"column"} $expanded={true} className={"skills"}>
             <PanelFlx padding={24}>
               <PanelFlexInnerWrap $direction={"row"} $flexWrap={true} $expanded={true} $gap={10}>
-                <ExpandedPanel id="a1"><Pages id="a1" testState={testState} onclick={testAction} children={html} /></ExpandedPanel>
+                <ExpandedPanel id="a1">
+                  <Pages id="a1" testState={testState} onclick={testAction} children={html} />
+                  <div>ㅁㄴㅇ</div>
+                </ExpandedPanel>
                 <ExpandedPanel id="a2"><Pages id="a2" testState={testState} onclick={testAction} children={css} /></ExpandedPanel>
                 <ExpandedPanel id="a3"><Pages id="a3" testState={testState} onclick={testAction} children={js} /></ExpandedPanel>
                 <ExpandedPanel id="a4"><Pages id="a4" testState={testState} onclick={testAction} children={nodejs} /></ExpandedPanel>
@@ -103,10 +106,6 @@ function Home({ themeChange,testAction, testState }) {
                 <ExpandedPanel id="a8"><Pages id="a8" testState={testState} onclick={testAction} children={mongodb} /></ExpandedPanel>
                 <ExpandedPanel id="a9"><Pages id="a9" testState={testState} onclick={testAction} children={firebase} /></ExpandedPanel>
                 <ExpandedPanel id="a10"><Pages id="a10" testState={testState} onclick={testAction} children={flutter} /></ExpandedPanel>
-                
-
-            
-        
 
               </PanelFlexInnerWrap>
               

@@ -4,6 +4,7 @@ import Home from "./Home";
 import About from "./about";
 import { ThemeProvider } from "styled-components";
 
+/* 분리 예정 */
 const darkTheme = {
   white: "#fff",
   white_2 : "#eee",
@@ -31,8 +32,9 @@ const lightTheme = {
   borderColor: "rgba(68, 68, 68, 0.18)",
   boxShadow: " 4px 4px 6px 0 rgba(0, 0, 0, 0.26), 1px 1px 4px 0 rgba(0, 0, 0, 0.26);",
   invert: "",
-
 };
+/* 분리 예정 */
+
 
 function App() {
   // theme 데이터 상태관리
@@ -88,9 +90,22 @@ function App() {
         id: ""
       })
     } else {
+     
+      //window.scrollY - getY 만큼 스크롤 이동
+      let currentScrollY = window.scrollY;
+      let topPositionCheck = e.currentTarget.getBoundingClientRect().top < 0;
+      console.log(e.currentTarget.getBoundingClientRect())
+      console.log(window.scrollY)
+
+      if (topPositionCheck) {
+        window.scrollTo({
+          top: currentScrollY + (e.currentTarget.getBoundingClientRect().top * 2),
+          behavior: "smooth"
+        })
+      }
       const windowData = {
         getX: e.currentTarget.getBoundingClientRect().left,
-        getY: e.currentTarget.getBoundingClientRect().top
+        getY: Math.abs(e.currentTarget.getBoundingClientRect().top)
       }
       setTestData({
         viewData: data,

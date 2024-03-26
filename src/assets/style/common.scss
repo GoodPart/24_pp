@@ -167,6 +167,10 @@ body,
   height: 100%;
 }
 
+#root.fixed{
+  overflow: hidden;
+}
+
 #root,
 .page-wrap {
   width: 100%;
