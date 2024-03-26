@@ -3,7 +3,19 @@
 ### URL : https://goodpart.github.io/24_pp/
 
 
+
+
 ## 작업 현황
+
+----------
+
+### 라우터
+> BrouserRouter의 basename을 지정해 root재설정
+```javascript
+<BrowserRouter basename={process.env.PUBLIC_URL}>
+</BrowserRouter>
+```
+
 ### 테마 작업 (50%)
 > 임시 스타일 추가 향후 수정 
 ### 모바일 대응 (60%)
