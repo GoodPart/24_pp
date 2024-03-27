@@ -58,6 +58,7 @@ const Wrapper = styled.div`
   background-size: cover;
   
   &:after {
+    z-index : 0;
     content: '';
     position: absolute;
     top: 0;
@@ -67,7 +68,14 @@ const Wrapper = styled.div`
     width : 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.16);
+    animation-name: welcomLight;
+    animation-duration: 3s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: forwards;
+    animation-direction: normal;
   }
+
+  
 
   .content {
     z-index : 10;
@@ -80,6 +88,17 @@ const Wrapper = styled.div`
     gap: 36px;
     align-items: center;
     justify-content: center;
+  }
+
+  @keyframes welcomLight {
+    0% {
+      background-color: rgba(0,0,0,1);
+      z-index : 100
+    }
+    100% {
+      background-color: rgba(0,0,0,0.16);
+      z-index : 0
+    }
   }
 
   .info-thumbnail__wrap {
