@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, ExpandedPanel, DetailPanel } from "./components/panel";
 import Buttons from "./components/widget/w_buttons";
 import WidgetProfile, { Heading01, WidgetProfileDesc } from "./components/widget/w_profil";
@@ -27,6 +27,7 @@ import { Label, LabelItemInlineDesc } from "./components/widget/w_label";
 import { Etc } from "./components/widget/etc/w_etc";
 
 import Contact from "./components/widget/contact/contact"
+import { OsAlert } from "./components/widget/systemalert/w_alert";
 
 
 
@@ -42,6 +43,35 @@ function Home({ themeChange,testAction, testState }) {
     target : ""
   });
 
+  const [alert, setAlert] = useState({
+    state: true,
+    time : 0,
+  })
+
+  function alerting({action}) {
+    if (action === "latter") {
+      setAlert({
+        state: false,
+        time: 5000
+      });
+      timer();
+      
+    } else {
+      setAlert({
+        state: false,
+        time: 0
+      });
+    }
+  }
+
+  const timer = () => {
+    setTimeout(() => {
+      setAlert({
+        state : true
+      })
+    }, 5000)
+  }
+
   function toggleDetailView({action, target}) {
     if (action == "close") {
       setDetailView({
@@ -49,7 +79,6 @@ function Home({ themeChange,testAction, testState }) {
         target : target
       })
     } else {
-
       setDetailView({
         state: !detailView.state,
         target : target
@@ -61,6 +90,7 @@ function Home({ themeChange,testAction, testState }) {
   
   return (
     <div className="main">
+      <OsAlert onclick={alerting} state={alert} />
       <div className="">
         <PanelWrapper>
           <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
@@ -73,7 +103,7 @@ function Home({ themeChange,testAction, testState }) {
               children={<WidgetProfile />}
             />
           </PanelFlexInnerWrap>
-          <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
+          {/* <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
             <PanelFlx
               flex={"inherit"}
               width={700}
@@ -82,7 +112,7 @@ function Home({ themeChange,testAction, testState }) {
               theme={theme}
               children={<WidgetProfileDesc />}
             />
-          </PanelFlexInnerWrap>
+          </PanelFlexInnerWrap> */}
           <PanelFlexInnerWrap $direction={"column"} className={"widgets"}>
             <PanelFlx
               padding={24.5}

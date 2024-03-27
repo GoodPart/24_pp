@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Home from "./Home";
-import About from "./about";
+import Login from "./login";
 import { ThemeProvider } from "styled-components";
 
 /* 분리 예정 */
@@ -144,7 +144,7 @@ function App() {
                   testState={testData}
                 />}
               />
-              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </BrowserRouter>
         </div>
@@ -160,7 +160,7 @@ function Navigation() {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/login">Login</Link>
       </li>
     </ul>
   );
