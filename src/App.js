@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes, Link, Redirect } from "react-router-dom";
 import Home from "./Home";
 import Login from "./login";
 import { ThemeProvider } from "styled-components";
 import { Navigation } from "./components/navigator";
+import { Cookies, CookiesProvider, useCookies } from "react-cookie";
 
 /* 분리 예정 */
 const darkTheme = {
@@ -38,6 +39,25 @@ const lightTheme = {
 
 
 function App() {
+  const cookies = new Cookies();
+  
+  const [cookie1, setCookie1] = useCookies(['auth']);
+  const setCookie = (name, value, options) => {
+    return setCookie1(name, value, {
+      path: "/",
+      source : "/"
+    })
+  }
+
+  const getCookie = (name) => {
+    return cookies.get(name);
+  }
+
+  const cookieToolkit = { setCookie, getCookie }
+
+  useEffect(() => {
+  }, [])
+
   // theme 데이터 상태관리
   const [themeMode, setThemeMode] = useState(true);
   const [floatData, setFloatData] = useState({
@@ -127,28 +147,36 @@ function App() {
 
 
   return (
-    <ThemeProvider theme={themeMode ? lightTheme : darkTheme}>
-      <div className={`wrapper ${themeMode === true ? "light" : "dark"}`}>
-        <div className={`page-wrap`}>
-          <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <Navigation themeChange={globalActions.themeChange} themeMode={themeMode} />
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={<Home floatData={floatData}
-                  themeChange={globalActions.themeChange}
-                  floating={globalActions.floatOpPress}
-                  testAction={globalActions.panelFunction}
-                  testState={testData}
-                />}
-              />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </BrowserRouter>
+    <CookiesProvider>
+      <ThemeProvider theme={themeMode ? lightTheme : darkTheme}>
+        <div className={`wrapper ${themeMode === true ? "light" : "dark"}`}>
+          <div className={`page-wrap`}>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
+              <Navigation themeChange={globalActions.themeChange} themeMode={themeMode} isAuth={getCookie("userId")} cookieTool={cookieToolkit}  />
+              <Routes>
+                <Route
+                  exact
+                  path="/"
+                  element={
+
+                    getCookie("userId") !== "" ? 
+                    <Home floatData={floatData}
+                      themeChange={globalActions.themeChange}
+                      floating={globalActions.floatOpPress}
+                      testAction={globalActions.panelFunction}
+                        testState={testData}
+                        cookieTool={cookieToolkit}
+                      />
+                       : <Login />
+                  }
+                />
+                <Route path="/login" element={<Login cookieTool={cookieToolkit}  />}  />
+              </Routes>
+            </BrowserRouter>
+          </div>
         </div>
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </CookiesProvider>
   );
 }
 

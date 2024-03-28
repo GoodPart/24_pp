@@ -37,17 +37,31 @@ import { Calendar } from "./components/widget/calendar/w_calendar";
 
 
 
-function Home({ themeChange,testAction, testState }) {
+function Home({ themeChange, testAction, testState, cookieTool }) {
   const [theme, setTheme] = useState(false);
   const [detailView, setDetailView] = useState({
     state: false,
     target : ""
+  });
+  const [isAuth, setIsAuth] = useState({
+    state: false,
+    userId : "User"
   });
 
   const [alert, setAlert] = useState({
     state: true,
     time : 0,
   })
+
+  useEffect(() => {
+    cookieTool.getCookie("userId") ? setIsAuth({
+      state: true,
+      userId: cookieTool.getCookie("userId")
+    }) : setIsAuth({
+      state: false,
+      value : ""
+    })
+  }, [])
 
   function alerting({action}) {
     if (action === "latter") {
@@ -91,7 +105,7 @@ function Home({ themeChange,testAction, testState }) {
   
   return (
     <div className="main">
-      <OsAlert onclick={alerting} state={alert} />
+      <OsAlert onclick={alerting} state={alert} isAuth={isAuth} />
       <div className="">
         <PanelWrapper>
           <PanelFlexInnerWrap $direction={"row"} className={"profile"}>

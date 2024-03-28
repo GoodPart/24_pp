@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export function Toggle({onclick, state  }) {
     return <Wrapper>
-        <input id="check1" type="checkbox" onClick={onclick} checked={state}></input>
+        <input id="check1" type="checkbox" onChange={onclick} checked={state}></input>
         <label htmlFor="check1">
             <div className="fk_toggle"></div>
         </label>

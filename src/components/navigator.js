@@ -9,7 +9,7 @@ import { faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 import { Toggle } from './widget/w_toggle';
 
 
-export function Navigation({ themeChange, themeMode }) {
+export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
     const today = new Date().getFullYear();
     const getMonth =
         new Date().getMonth() + 1 < 10
@@ -62,7 +62,9 @@ export function Navigation({ themeChange, themeMode }) {
                                     <Link to="/">Home</Link>
                                 </li>
                                 <li>
-                                    <Link to="/login">Login</Link>
+                                    {
+                                        isAuth ? <Link to="/login" onClick={() => cookieTool.setCookie("userId","")}>LogOut</Link> : <Link to="/login">Login</Link>
+                                    }
                                 </li>
                             </ul>
                         </div>

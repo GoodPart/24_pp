@@ -1,26 +1,37 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 // JSX 태그 내
 
-export function Login() {
+export function Login(cookieTool) {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
+  const params = useLocation();
+
+  useEffect(() => {
+  }, [])
 
   const onChange = (e) => {
     setInput(e.target.value)
   }
   const routing = (e) => {
+    console.log(cookieTool)
+    cookieTool.cookieTool.setCookie("userId", input, {
+      path: '/',
+      source: '/'
+    })
     if (e.code === "Enter" && e.target.value != "") {
       navigate("/")
+      
     } else {
       if (e.type === "click") {
         navigate("/")
       }
     }
+    
   }
   return <Wrapper>
     <div className="content">

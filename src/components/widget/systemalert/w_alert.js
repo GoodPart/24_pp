@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 
-export const OsAlert = ({onclick, state }) => {
+export const OsAlert = ({ onclick, state, isAuth }) => {
     const data = {
-        title: "Welcome to myHome User",
+        title: `Welcome to myHome '${isAuth.userId}'`,
         rank: "Take a quick tour to learn about great new features",
         
     }
