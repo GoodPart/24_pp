@@ -1,7 +1,10 @@
 import React,{useState} from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
+// JSX 태그 내
 
 export function Login() {
   const navigate = useNavigate();
@@ -30,9 +33,14 @@ export function Login() {
           <div className="input-field">
             <div className="inner-wrapper">
               <input type="password" placeholder="암호 입력" onChange={(e) => onChange(e)} onKeyDown={(e) => routing(e)} value={input} security="true" />
-              {input.length <= 0 ? "" : <button type="button" onClick={(e) => routing(e)} className="enter">&#62;</button> } 
+              {input.length <= 0 ? "" : <button type="button" onClick={(e) => routing(e)} className="enter">
+                <FontAwesomeIcon icon={faArrowRight} />
+              </button>} 
             </div>
-            <div className="icon">?<span>원하는 암호를 작성 해주세요.</span></div>
+            <div className="icon">
+              <FontAwesomeIcon icon={faQuestion} />
+              <span>원하는 암호를 작성 해주세요.</span>
+            </div>
           </div>
           <div className="hint-field">
             <span>Touch ID를 활성화하려면 사용자<br />암호가 필요합니다.</span>
@@ -170,12 +178,18 @@ const Wrapper = styled.div`
         top: 50%;
         right: 9px;
         transform: translateY(-50%);
+        width: 30px;
+        height : 30px;
         background-color: transparent;
         color : #fff;
         animation-name : login;
         animation-duration: 1s;
         animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
         animation-fill-mode: forwards;
+
+        img {
+          width : 100%;
+        }
       }
     }
 

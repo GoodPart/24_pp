@@ -53,8 +53,20 @@ export const PanelWrapper = styled.div`
   & + div {
     padding-top: 0;
   }
-  & + div {
-    z-index : 0
+  &.app_area {
+    z-index : 10
+  }
+
+  &.navigator {
+    z-index : 99999999999;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    left: 0;
+
+    .show {
+      border-radius: 0;
+    }
   }
 `;
 

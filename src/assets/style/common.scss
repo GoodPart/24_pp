@@ -196,6 +196,10 @@ body,
   );
 }
 
+.main {
+  padding-top: 80px !important;
+}
+
 @media (max-width : 1023px) and (min-width : 768px) {
   .profile {
     flex: 1 !important;

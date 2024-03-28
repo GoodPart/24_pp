@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
     position: fixed;
     display: flex;
     align-items: center;
-    top: 12px;
+    top: 52px;
     /* right: 12px; */
     right: -600px;
     /* width: 500px; */
@@ -142,17 +142,17 @@ export const Wrapper = styled.div`
     }
     @keyframes hiding {
         0% {
-            top : 12px;
+            top : 52px;
             right : 12px;
         }
         30% {
-            top: 24px;
+            top: 64px;
             right: 12px;
             
         }
         100% {
             right: -600px;
-            top : 24px;
+            top : 64px;
 
         }
     }

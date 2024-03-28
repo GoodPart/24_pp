@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Home from "./Home";
 import Login from "./login";
 import { ThemeProvider } from "styled-components";
+import { Navigation } from "./components/navigator";
 
 /* 분리 예정 */
 const darkTheme = {
@@ -95,8 +96,6 @@ function App() {
       //window.scrollY - getY 만큼 스크롤 이동
       let currentScrollY = window.scrollY;
       let topPositionCheck = e.currentTarget.getBoundingClientRect().top < 0;
-      // console.log(e.currentTarget.getBoundingClientRect())
-      // console.log(window.scrollY)
 
       if (topPositionCheck) {
         window.scrollTo({
@@ -132,7 +131,7 @@ function App() {
       <div className={`wrapper ${themeMode === true ? "light" : "dark"}`}>
         <div className={`page-wrap`}>
           <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <Navigation />
+            <Navigation themeChange={globalActions.themeChange} themeMode={themeMode} />
             <Routes>
               <Route
                 exact
@@ -153,17 +152,6 @@ function App() {
   );
 }
 
-function Navigation() {
-  return (
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
-    </ul>
-  );
-}
+
 
 export default App;
