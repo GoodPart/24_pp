@@ -42,6 +42,9 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
 
     startTimer();
 
+    useEffect(() => {
+        // cookieTool.getCookie("userId")
+    }, [])
     return (
         <PanelWrapper className='navigator'>
             <PanelFlexInnerWrap $direction={"row"} className={"navigator"} $expanded={true}>
@@ -59,11 +62,13 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
                             </div>
                             <ul>
                                 <li>
-                                    <Link to="/">Home</Link>
+                                    {
+                                        isAuth != undefined ? <Link to={ "/"}>Home</Link>  : "Home"
+                                    }
                                 </li>
                                 <li>
                                     {
-                                        isAuth ? <Link to="/login" onClick={() => cookieTool.setCookie("userId","")}>LogOut</Link> : <Link to="/login">Login</Link>
+                                    <Link to="/login">Login</Link>
                                     }
                                 </li>
                             </ul>
@@ -71,7 +76,7 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
                         <div className='functions'>
                             <div>베터리</div>
                             <div className='theme'><Toggle onclick={themeChange} state={themeMode} /> <span>{themeMode ? "Light" : "Dark"}</span></div>
-                            <div>{getMonth}월 {getDate}일 {getHour}:{getMin}:{getSec}</div>
+                            <div>{getMonth}월 {getDate}일 {getHour}:{getMin}</div>
                         </div>
                     </Wrapper>
                 </PanelFlx>

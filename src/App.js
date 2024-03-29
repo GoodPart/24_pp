@@ -41,22 +41,32 @@ const lightTheme = {
 function App() {
   const cookies = new Cookies();
   
-  const [cookie1, setCookie1] = useCookies(['auth']);
+  const [cookie1, setCookie1, removeCookie1] = useCookies(['auth']);
   const setCookie = (name, value, options) => {
-    return setCookie1(name, value, {
+    setCookie1(name, value, {
       path: "/",
-      source : "/"
+      source: "/",
+      // expires: new Date(Date.now() + 5 * 1000),
     })
   }
 
   const getCookie = (name) => {
     return cookies.get(name);
   }
+  const popCookie = (name) => {
+    removeCookie1("auth")
+  }
 
-  const cookieToolkit = { setCookie, getCookie }
+  const loginAction = (name, value) => {
+    alert("asd")
+    // const result = await setCookie(name, value);
+    
+    // console.log(result);
+  }
 
-  useEffect(() => {
-  }, [])
+
+  const cookieToolkit = { setCookie, getCookie, popCookie }
+
 
   // theme 데이터 상태관리
   const [themeMode, setThemeMode] = useState(true);
@@ -159,7 +169,6 @@ function App() {
                   path="/"
                   element={
 
-                    getCookie("userId") !== "" ? 
                     <Home floatData={floatData}
                       themeChange={globalActions.themeChange}
                       floating={globalActions.floatOpPress}
@@ -167,10 +176,9 @@ function App() {
                         testState={testData}
                         cookieTool={cookieToolkit}
                       />
-                       : <Login />
                   }
                 />
-                <Route path="/login" element={<Login cookieTool={cookieToolkit}  />}  />
+                <Route path={`/login`} element={<Login cookieTool={cookieToolkit} loginAction={loginAction} />}  />
               </Routes>
             </BrowserRouter>
           </div>

@@ -54,13 +54,15 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
   })
 
   useEffect(() => {
-    cookieTool.getCookie("userId") ? setIsAuth({
+    cookieTool.getCookie("userId") != undefined ? setIsAuth({
       state: true,
       userId: cookieTool.getCookie("userId")
     }) : setIsAuth({
       state: false,
       value : ""
     })
+
+    console.log(cookieTool.getCookie("userId"))
   }, [])
 
   function alerting({action}) {
@@ -148,8 +150,9 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
           <PanelFlexInnerWrap className={"app_use_info"}>
             <PanelFlx
               padding={24}
-              height={'auto'}
+              flex={'auto'}
               width={400}
+              minHeight={'auto'}
               flexDirection={"column"}
               minWidth
             >

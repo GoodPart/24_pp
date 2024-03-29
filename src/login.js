@@ -6,24 +6,19 @@ import { faArrowRight, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 // JSX 태그 내
 
-export function Login(cookieTool) {
+export function Login(cookieTool, loginAction) {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
-  const params = useLocation();
 
-  useEffect(() => {
-  }, [])
 
   const onChange = (e) => {
     setInput(e.target.value)
   }
   const routing = (e) => {
-    console.log(cookieTool)
-    cookieTool.cookieTool.setCookie("userId", input, {
-      path: '/',
-      source: '/'
-    })
+   
     if (e.code === "Enter" && e.target.value != "") {
+
+      console.log("input", loginAction)
       navigate("/")
       
     } else {

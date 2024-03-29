@@ -68,6 +68,21 @@ export const CalendarItem = ({ dateProps, type }) => {
     const nowMonth = now.getMonth() + 1;
     const nowDate = now.getDate();
 
+    let sel_day = 4;
+    const getBeforeDay = (sel) => new Date().setDate(new Date().getDate() + sel);
+
+    let dayArray = [];
+
+    for (let i = 1; i < (sel_day * 2) ; i++) {
+        if (i <= sel_day) {
+            dayArray.push(getBeforeDay(i - sel_day))
+        } else {
+            dayArray.push(getBeforeDay(Math.abs(i - sel_day)))
+        }
+    }
+
+    
+
     const firstDate = new Date(dateY, dateM, 1).getDate();
     const lastDate = new Date(dateY, dateM, 0).getDate();
 
@@ -85,11 +100,11 @@ export const CalendarItem = ({ dateProps, type }) => {
         dateM: dateM
     }
     return (
-        <Element calendarProps={form} getDayFunc={getDayFunc} type={type} />
+        <Element calendarProps={form} get5={dayArray} getDayFunc={getDayFunc} type={type} />
     )
 } 
 
-export const Element = ({calendarProps, getDayFunc, type }) => {
+export const Element = ({ calendarProps, get5, getDayFunc, type }) => {
     const mapLength = calendarProps.last_date;
 
     const localMonth = calendarProps.dateM;
@@ -99,18 +114,23 @@ export const Element = ({calendarProps, getDayFunc, type }) => {
     const nowMonth = calendarProps.now_month;
     const getMapArray = Array.from({ length: mapLength }, (value, index) => index + 1);
 
+    
     return (
         <Wrapper>
-            {nowYear}<br />
-            {nowMonth}<br />
-            <ViewWrap $type={type}>
-            {
-                getMapArray.map((ele, index) => {
-                    return <div className='element'>
-                        <div>{getDayFunc(new Date(calendarProps.dateY, calendarProps.dateM - 1, ele).getDay())}</div>
-                        <div>{ele === nowDate ? `*${ele}` : ele}</div>
-                    </div>
-                })
+            {/* {nowYear}<br />
+            {nowMonth}<br /> */}
+            <ViewWrap $type={'viewer'}>
+                <Select $data={3}></Select>
+                {
+                    get5.map((ele, index) => {
+                        
+                        return (
+                            <div className='element' data-index={index+1}>
+                                <div>{getDayFunc(new Date(ele).getDay())}</div>
+                                <div key={index}>{new Date(ele).getDate()}</div>
+                            </div>
+                        )
+                    })
             }
 
             </ViewWrap>
@@ -120,20 +140,48 @@ export const Element = ({calendarProps, getDayFunc, type }) => {
 
 const Wrapper = styled.div`
     height: inherit;
-    overflow-y: auto;
-
 `
 
 const ViewWrap = styled.div`
+    position: relative;
     display: flex;
     flex-wrap: ${props => props.$type === "viewer" ? "wrap" : ""};
     flex-direction: ${props => props.$type === "viewer" ? "" : "column"};
+    justify-content: center;
+    height: inherit;
+
 
     .element {
-        width : calc(100% / 7);
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        width : calc(100% / 7);
+        gap: 4px;
+        mix-blend-mode: difference;
+        color : #444;
+        transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+
+        div:first-child {
+            font-weight: 700;
+        }
+
+        &:hover {
+            background-color: rgba(0,0,0,0.2)
+        }
     }
+    
+`
+
+const Select = styled.div`
+    position: absolute;
+    top: 0;
+    left : 0;
+    transform: ${props => `translateX(calc(${props.$data} * 100%))`};
+    width: calc(100% / 7);
+    background-color: coral;
+    height: 100%;
+    border-radius: 8px;
+
 `
