@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { PanelFlx } from '../panel';
 
 export const SwiperWrap = ({ data }) => {
-    console.log(data)
+    useEffect(() => {
+        console.log(data)
+        
+    }, [data])
     return (
         <Swiper
             // install Swiper modules
