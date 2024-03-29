@@ -186,7 +186,7 @@ body,
   // height: 100vh;
 }
 .wrapper.dark {
-  background: #121212;
+  background: #232323;
 }
 .wrapper.light {
   background: linear-gradient(
@@ -200,6 +200,23 @@ body,
   padding-top: 80px !important;
 }
 
+.swiper-slide {
+  display: flex;
+  width: 340px;
+
+  .show {
+    height: auto;
+  }
+  .show a {
+    display: flex;
+    flex-direction: column;
+  }
+  .show img {
+    height: 200px;
+    object-fit: cover;
+    
+  }
+}
 @media (max-width : 1023px) and (min-width : 768px) {
   .profile {
     flex: 1 !important;

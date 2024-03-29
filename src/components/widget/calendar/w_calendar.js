@@ -126,7 +126,7 @@ export const Element = ({ calendarProps, get5, getDayFunc, type }) => {
                         
                         return (
                             <div className='element' data-index={index+1}>
-                                <div>{getDayFunc(new Date(ele).getDay())}</div>
+                                <div className={getDayFunc(new Date(ele).getDay()) == "일" || getDayFunc(new Date(ele).getDay()) == "토" ? "holly" : "" } >{getDayFunc(new Date(ele).getDay())}</div>
                                 <div key={index}>{new Date(ele).getDate()}</div>
                             </div>
                         )
@@ -152,23 +152,28 @@ const ViewWrap = styled.div`
 
 
     .element {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width : calc(100% / 7);
         gap: 4px;
-        mix-blend-mode: difference;
-        color : #444;
+        color : ${props => props.theme.textColor};
         transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+        border-radius: 8px;
 
 
-        div:first-child {
+        .holly {
+            color: red;
+        }
+
+        div {
             font-weight: 700;
         }
 
         &:hover {
-            background-color: rgba(0,0,0,0.2)
+            background-color: rgba(0,0,0,0.1);
         }
     }
     
@@ -176,11 +181,13 @@ const ViewWrap = styled.div`
 
 const Select = styled.div`
     position: absolute;
+    z-index : -1;
     top: 0;
     left : 0;
     transform: ${props => `translateX(calc(${props.$data} * 100%))`};
+    transition: transform .6s cubic-bezier(0.075, 0.82, 0.165, 1);
     width: calc(100% / 7);
-    background-color: coral;
+    background: ${props => props.theme.backgroundColorDepth2};
     height: 100%;
     border-radius: 8px;
 

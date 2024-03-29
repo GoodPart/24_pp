@@ -58,7 +58,7 @@ export const PanelWrapper = styled.div`
   }
 
   &.navigator {
-    z-index : 99999999999;
+    z-index : 200;
     padding: 0;
     width: 100%;
     position: fixed;
@@ -97,7 +97,8 @@ const PanelFlxWrap = styled.div`
   transform: scale(0);
   background: ${(props) => props.theme.backgroundColor};
   transition: background-color 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  box-shadow: ${props => props.theme.boxShadow};
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;

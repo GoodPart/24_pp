@@ -31,6 +31,8 @@ import { OsAlert } from "./components/widget/systemalert/w_alert";
 
 import { Calendar } from "./components/widget/calendar/w_calendar";
 
+import axios from "axios";
+import { SwiperWrap } from "./components/widget/w_swiper";
 
 
 
@@ -39,6 +41,7 @@ import { Calendar } from "./components/widget/calendar/w_calendar";
 
 function Home({ themeChange, testAction, testState, cookieTool }) {
   const [theme, setTheme] = useState(false);
+  const [news, setNews] = useState('');
   const [detailView, setDetailView] = useState({
     state: false,
     target : ""
@@ -49,7 +52,7 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
   });
 
   const [alert, setAlert] = useState({
-    state: true,
+    state: true, // 임시 false
     time : 0,
   })
 
@@ -62,7 +65,16 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
       value : ""
     })
 
-    console.log(cookieTool.getCookie("userId"))
+    const fetchNews = async () => {
+      await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
+        setNews(res.data.articles)
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+    fetchNews()
+
+
   }, [])
 
   function alerting({action}) {
@@ -110,7 +122,21 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
       <OsAlert onclick={alerting} state={alert} isAuth={isAuth} />
       <div className="">
         <PanelWrapper>
-          <PanelFlexInnerWrap $direction={"row"} className={"profile"}>
+          <PanelFlexInnerWrap $direction={"column"} className={"profile"}>
+            <PanelFlexInnerWrap className={"app_use_info"}>
+              <PanelFlx
+                padding={12}
+                flex={'auto'}
+                width={400}
+                height={70}
+                minHeight={'auto'}
+                flexDirection={"column"}
+                minWidth
+              >
+                <Calendar type="viewer" />
+              </PanelFlx>
+
+            </PanelFlexInnerWrap>
             <PanelFlx
               flex={'inherit'}
               width={400}
@@ -123,14 +149,14 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
           <PanelFlexInnerWrap $direction={"row"} className={"profile"} $expanded={true}>
             <PanelFlx
               flex={'auto'}
-              height={310}
+              height={'auto'}
               padding={24}
               theme={theme}
               children={<WidgetProfileDesc />}
             />
           </PanelFlexInnerWrap>
-          {/* <PanelFlexInnerWrap $direction={"column"} className={"widgets"}>
-            <PanelFlx
+          <PanelFlexInnerWrap $direction={"row"} className={"widgets"}>
+            {/* <PanelFlx
               padding={24.5}
               flex={0}
               flexDirection={"column"}
@@ -145,21 +171,19 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
               children={<Today />}
               flexDirection={"column"}
               justify="center"
-            />
-          </PanelFlexInnerWrap> */}
-          <PanelFlexInnerWrap className={"app_use_info"}>
+            /> */}
             <PanelFlx
+              width={500}
+              height={392}
               padding={24}
-              flex={'auto'}
-              width={400}
-              minHeight={'auto'}
-              flexDirection={"column"}
-              minWidth
             >
-              <Calendar type="viewer" />
+              {
+                news ? <SwiperWrap data={news} /> : "loading..."
+              }
             </PanelFlx>
-            
           </PanelFlexInnerWrap>
+         
+          
         
           
         </PanelWrapper>

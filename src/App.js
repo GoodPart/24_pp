@@ -18,7 +18,7 @@ const darkTheme = {
   linearGradientColor:
     "linear-gradient(131deg,rgba(238, 174, 202, 1) 0%,rgba(148, 187, 233, 1) 100%)",
   borderColor: "rgba(255, 255, 255, 0.1)",
-  boxShadow: " 4px 4px 6px 0 rgba(255, 255, 255, 0.26), 1px 1px 4px 0 rgba(255, 255, 255, 0.26)",
+  boxShadow: " 4px 4px 6px 0 rgba(0, 0, 0, 0.26), 1px 1px 4px 0 rgba(0, 0, 0, 0.26)",
   invert: "invert()",
 };
 const lightTheme = {
@@ -30,7 +30,7 @@ const lightTheme = {
   backgroundColor: "rgba(255,255,255, 0.6)",
   backgroundColorDepth2: "rgba(255, 255, 255, 0.8)",
   linearGradientColor:
-    "#121212",
+    "#0F172A",
   borderColor: "rgba(68, 68, 68, 0.18)",
   boxShadow: " 4px 4px 6px 0 rgba(0, 0, 0, 0.26), 1px 1px 4px 0 rgba(0, 0, 0, 0.26);",
   invert: "",
