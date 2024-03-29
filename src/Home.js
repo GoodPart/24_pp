@@ -65,14 +65,14 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
       value : ""
     })
 
-    const fetchNews = async () => {
-      await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
-        setNews(res.data.articles)
-      }).catch(err => {
-        console.log(err)
-      })
-    }
-    fetchNews()
+    // const fetchNews = async () => {
+    //   await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
+    //     setNews(res.data.articles)
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // }
+    // fetchNews()
 
 
   }, [])
