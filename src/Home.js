@@ -150,7 +150,7 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
             <PanelFlx
               flex={'auto'}
               height={'auto'}
-              padding={24}
+              padding={12}
               theme={theme}
               children={<WidgetProfileDesc />}
             />
@@ -177,9 +177,14 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
               height={392}
               padding={24}
             >
-              {
-                news ? <SwiperWrap data={news} /> : "loading..."
-              }
+              <PanelFlexInnerWrap $direction={"column"} $flexWrap={false} $expanded={true} $gap={8} $width={'100%'}>
+                <Heading01 className="">today</Heading01>
+
+                {
+                  news ? <SwiperWrap data={news} /> : "loading..."
+                }
+              </PanelFlexInnerWrap>
+              
             </PanelFlx>
           </PanelFlexInnerWrap>
          

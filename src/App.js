@@ -58,8 +58,7 @@ function App() {
   }
 
   const loginAction = (name, value) => {
-    alert("asd")
-    // const result = await setCookie(name, value);
+    setCookie(name, value);
     
     // console.log(result);
   }

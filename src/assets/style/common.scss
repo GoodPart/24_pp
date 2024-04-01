@@ -200,21 +200,66 @@ body,
   padding-top: 80px !important;
 }
 
+.swiper {
+  height: 100%;
+}
+.swiper-wrapper {
+}
 .swiper-slide {
   display: flex;
-  width: 340px;
-
+  width: 380px;
   .show {
     height: auto;
+    box-shadow: none;
   }
   .show a {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
   .show img {
-    height: 200px;
+    // height: 200px;
     object-fit: cover;
-    
+  }
+
+  .info__wrap {
+    div {
+      transform: translateY(0);
+      opacity: 0;
+    }
+  }
+
+
+
+  &.swiper-slide-active {
+    .info__wrap {
+      div:first-child {
+          animation-name: hover;
+          animation-duration: 1.4s;
+          animation-delay: .2s;
+          animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+          animation-fill-mode: forwards;
+        }
+      
+        div:last-child {
+          animation-name: hover;
+          animation-duration: 1s;
+          animation-delay: .4s;
+          animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+          animation-fill-mode: forwards;
+        }
+    }
+  }
+}
+
+@keyframes hover {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-16px);
+      opacity: 1;
   }
 }
 @media (max-width : 1023px) and (min-width : 768px) {

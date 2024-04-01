@@ -176,6 +176,7 @@ export const PanelFlexInnerWrap = styled.div`
   flex-direction: ${(props) => props.$direction};
   flex-wrap: ${props=>props.$flexWrap ? "wrap" : ""};
   gap: ${props => props.$gap ? props.$gap : "12"}px;
+  width : ${props => props.$width ? props.$width : ""};
 
   > * {
     width: ${(props) => (props.$expanded ? "inherit" : props.width)};

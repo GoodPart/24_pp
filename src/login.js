@@ -18,17 +18,20 @@ export function Login(cookieTool, loginAction) {
    
     if (e.code === "Enter" && e.target.value != "") {
 
-      console.log("input", loginAction)
+      cookieTool.cookieTool.setCookie("userId", e.target.value)
       navigate("/")
       
     } else {
       if (e.type === "click") {
+        cookieTool.cookieTool.setCookie("userId", e.target.value)
+
         navigate("/")
       }
     }
     
   }
   return <Wrapper>
+    <img src={`${process.env.PUBLIC_URL}/images/wallbapper.jpg`} />
     <div className="content">
       <div className="info-thumbnail__wrap">
         <img src="https://pbs.twimg.com/profile_images/1343164971681599488/ZV30t8pJ_400x400.jpg" />
@@ -67,9 +70,14 @@ const Wrapper = styled.div`
   bottom: 0;
   width : 100%;
   height: 100%;
-  background : url("images/wallbapper.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
+  /* background : url("images/wallbapper.jpg") no-repeat; */
+  /* background-position: center;
+  background-size: cover; */
+
+  img {
+    width : 100%;
+    height: 100%;
+  }
   
   &:after {
     z-index : 0;
