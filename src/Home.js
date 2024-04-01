@@ -41,7 +41,31 @@ import { SwiperWrap } from "./components/widget/w_swiper";
 
 function Home({ themeChange, testAction, testState, cookieTool }) {
   const [theme, setTheme] = useState(false);
-  const [news, setNews] = useState('');
+  const newsCategory = [
+    {
+      category: "mixed",
+      name: "전체",
+    },{
+      category: "business",
+      name: "비즈니스",
+    },{
+      category: "health",
+      name: "건강",
+    },{
+      category: "science",
+      name: "과학",
+    },{
+      category: "sports",
+      name: "스포츠",
+    },{
+      category: "technology",
+      name: "기술",
+    },
+  ]
+  const [news, setNews] = useState({
+    category: "business",
+    name : "비즈니스"
+  });
   const [detailView, setDetailView] = useState({
     state: false,
     target : ""
@@ -66,8 +90,12 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
     })
 
     const fetchNews = async () => {
-      await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
-        setNews(res.data.articles)
+      
+      await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&category=${news.category}&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
+        setNews({
+          data: res.data.articles,
+          category : news.name
+        })
       }).catch(err => {
         console.log(err)
       })
@@ -172,8 +200,25 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
               flexDirection={"column"}
               justify="center"
             /> */}
+            <PanelFlexInnerWrap $direction={'column'} $gap={6}> 
+              {/* <PanelFlx minHeight={'auto'} children={'asd'}/>
+              <PanelFlx minHeight={'auto'} />
+              <PanelFlx minHeight={'auto'} />
+              <PanelFlx minHeight={'auto'} />
+              <PanelFlx minHeight={'auto'} />
+              <PanelFlx minHeight={'auto'} />
+              <PanelFlx minHeight={'auto'} /> */}
+              {
+                Object.values(newsCategory).map((item, index) => {
+                  return (
+                    <PanelFlx id={item.category} key={index} minHeight={'auto'} children={<div>{item.name}</div>}/>
+                  )
+                })
+              }
+              
+            </PanelFlexInnerWrap>
             <PanelFlx
-              width={500}
+              width={600}
               height={392}
               padding={24}
             >
@@ -181,7 +226,7 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
                 <Heading01 className="">today</Heading01>
 
                 {
-                  news ? <SwiperWrap data={news} /> : "loading..."
+                  news.data ? <SwiperWrap data={news.data} /> : "loading..."
                 }
               </PanelFlexInnerWrap>
               

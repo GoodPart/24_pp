@@ -34,7 +34,7 @@ const PagesWrap = styled.div`
     width: inherit;
     height: inherit;
     background-color: ${props => props.theme.backgroundColor100};
-    transition: width 1s cubic-bezier(0.22, 1, 0.36, 1), height 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1), z-index 1s cubic-bezier(0.22, 1, 0.36, 1) ;
+    transition: width .8s cubic-bezier(0.22, 1, 0.36, 1), height .8s cubic-bezier(0.22, 1, 0.36, 1), transform .8s cubic-bezier(0.22, 1, 0.36, 1), z-index .8s cubic-bezier(0.22, 1, 0.36, 1) ;
 
     > h1 {
         position: absolute;

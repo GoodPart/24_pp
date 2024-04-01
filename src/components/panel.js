@@ -9,6 +9,7 @@ export default function Panel({ width = 200, height = 200, children }) {
 }
 
 export function PanelFlx({
+  id = '',
   flex = 1,
   width = 100,
   height = 100,
@@ -24,6 +25,7 @@ export function PanelFlx({
 }) {
   return (
     <PanelFlxWrap
+      id={id}
       className={`show ${addClassName}`}
       $flex={flex}
       $width={width}

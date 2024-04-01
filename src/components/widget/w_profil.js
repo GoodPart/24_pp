@@ -147,28 +147,42 @@ const Desc1 = styled.div`
 `;
 
 
-export const WidgetProfileDesc = ({ }) => {
+export const WidgetProfileDesc = ({ })=> {
   return (
     <ProfileDescWrap>
-      안녕하세요, 프론트 공부중인 퍼블리셔 박경수입니다.
+      안녕하세요,개발 좋아하는 퍼블리셔 박경수입니다.
       <br />
-      대한민국 남자의 의무를 마치고 뒤늦게 시작한 공부가<br />
+      국방의 의무를 마치고 뒤늦게 시작한 공부가<br />
       운이좋게 적성에 맞아 어느덧 7년이 되어가네요.<br />
       <br />
       처음은 단순히 이쁜 디자인을 화면에 옮기는것에 흥미를 느껴 시작했지만,<br />
-      지금은 인터렉션과 비즈니스 로직 및 상태관리 방법 등을 고민하고 있습니다.<br />
+      지금은 상태에 따른 인터렉션과 비즈니스 로직 등을 고민하고 있습니다.<br />
       <br />
       제 업무의 대부분은 퍼블리싱이지만 프론트엔드 개발자가 되길 희망합니다.<br />
-      그래서, 기회가 온다면 놓치지 않기 위해 지속적인 토이 프로젝트를 진행하며 노력하고 있습니다.<br />
+      그래서, 기회가 온다면 놓치지 않기 위해 개인 프로젝트를 진행하며 노력하고 있습니다.<br />
       <br />
-
-
+      본 페이지는 24년도를 새롭게 만든 포트폴리오 페이지입니다.<br />
+      <br />
+      <br />
+      감사합니다. 박경수 드림
     </ProfileDescWrap>
   )
 }
 
+
 const ProfileDescWrap = styled.div`
-  padding: 12px;
-  border: 1px solid ${(props) => props.theme.borderColor};
-  border-radius: 8px;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  animation-name: showing;
+  animation-duration: 0.6s;
+  animation-delay: 0.4s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-fill-mode: forwards;
+  animation-direction: normal;
+  color: ${props => props.theme.textColor};
+  line-height: 20px;
+
 `
