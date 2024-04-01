@@ -32,4 +32,5 @@
 
 ### 뉴스 API 추가
 > 이벤트 발생시 API 지속적으로 요청
-- useEffect로 해결 
+- useEffect로 해결
+- active시 스타일 수정
