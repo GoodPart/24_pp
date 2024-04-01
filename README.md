@@ -29,7 +29,10 @@
 - 기능 작업 완료, 메일 서버 구축 전
 
 ### 로그인 페이지 작업
+> react-cookie 사용 작업
+- 작업 홀드
 
 ### 뉴스 API 추가
 > 이벤트 발생시 API 지속적으로 요청
-- useEffect로 해결 
+- useEffect로 해결
+- active시 스타일 수정
