@@ -92,7 +92,7 @@ const PanelFlxWrap = styled.div`
   flex: ${(props) => props.$flex};
   padding: ${(props) => props.$padding}px;
   width: ${(props) => props.$width - props.$padding * 2}px;
-  height: ${(props) => props.$height == 'auto' ?props.$height : (props.$height - props.$padding * 2)+'px'};
+  height: ${(props) => props.$height == 'auto' ? props.$height : (props.$height - props.$padding * 2)+'px'};
   gap : ${props=> props.$gap}px;
   min-width: 100px;
   min-height: ${props => props.$minHeight == 'auto' ? props.$minHeight : '100px' };

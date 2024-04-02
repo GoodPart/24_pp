@@ -19,6 +19,7 @@ const darkTheme = {
     "linear-gradient(131deg,rgba(238, 174, 202, 1) 0%,rgba(148, 187, 233, 1) 100%)",
   borderColor: "rgba(255, 255, 255, 0.1)",
   boxShadow: " 4px 4px 6px 0 rgba(0, 0, 0, 0.26), 1px 1px 4px 0 rgba(0, 0, 0, 0.26)",
+  loadingtheme: "linear-gradient(120deg, #232323 30%, rgba(68, 68, 68, 0.6) 38%, rgba(68, 68, 68, 0.6) 40%, #232323 48%)",
   invert: "invert()",
 };
 const lightTheme = {
@@ -33,6 +34,7 @@ const lightTheme = {
     "#0F172A",
   borderColor: "rgba(68, 68, 68, 0.18)",
   boxShadow: " 4px 4px 6px 0 rgba(0, 0, 0, 0.26), 1px 1px 4px 0 rgba(0, 0, 0, 0.26);",
+  loadingtheme: "linear-gradient(120deg, #eaeaea 30%, rgba(244, 244, 244, 0.6) 38%, rgba(244, 244, 244, 0.6) 40%, #eaeaea 48%)",
   invert: "",
 };
 /* 분리 예정 */
@@ -62,6 +64,10 @@ function App() {
     
     // console.log(result);
   }
+
+  useEffect(() => {
+    console.log(Object.keys(cookie1).length == 0)
+  }, [])
 
 
   const cookieToolkit = { setCookie, getCookie, popCookie }

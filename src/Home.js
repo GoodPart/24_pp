@@ -32,7 +32,8 @@ import { OsAlert } from "./components/widget/systemalert/w_alert";
 import { Calendar } from "./components/widget/calendar/w_calendar";
 
 import axios from "axios";
-import { SwiperWrap } from "./components/widget/w_swiper";
+import { SwiperWrap, SwiperWrapLoading } from "./components/widget/w_swiper";
+import { NewsCategory } from "./components/widget/news/news";
 
 
 
@@ -45,27 +46,36 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
     {
       category: "mixed",
       name: "전체",
+      icon : "faShuffle"
     },{
       category: "business",
       name: "비즈니스",
+      icon: "faNewspaper"
     },{
       category: "health",
       name: "건강",
+      icon: "faHandHoldingHeart"
+
     },{
       category: "science",
       name: "과학",
+      icon: "faBrain"
     },{
       category: "sports",
       name: "스포츠",
+      icon: "faPersonWalking"
     },{
       category: "technology",
       name: "기술",
+      icon: "faRocket"
     },
   ]
   const [news, setNews] = useState({
-    category: "business",
-    name : "비즈니스"
+    category: "mixed",
+    name: "전체",
+    data: "",
   });
+  const [loading, setLoading] = useState(false);
   const [detailView, setDetailView] = useState({
     state: false,
     target : ""
@@ -80,6 +90,31 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
     time : 0,
   })
 
+
+  const fetchNews = async (category) => {
+
+    const get = newsCategory.filter(item => item.category === category && item.name);
+    setLoading(true)
+    await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&category=${category == "mixed" ? "" : category}&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
+      setNews({
+        data: res.data.articles,
+        name: get[0].name,
+        category: category
+      })
+      console.log(res.data)
+    }).catch(err => {
+      console.log(err)
+      if (err.response.status === 429) {
+        setNews({
+          ...news,
+          loading: false,
+        })
+      } 
+
+    })
+    setLoading(false)
+  }
+
   useEffect(() => {
     cookieTool.getCookie("userId") != undefined ? setIsAuth({
       state: true,
@@ -89,18 +124,8 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
       value : ""
     })
 
-    const fetchNews = async () => {
-      
-      await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&category=${news.category}&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
-        setNews({
-          data: res.data.articles,
-          category : news.name
-        })
-      }).catch(err => {
-        console.log(err)
-      })
-    }
-    fetchNews()
+    
+    fetchNews(news.category)
 
 
   }, [])
@@ -183,7 +208,14 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
               children={<WidgetProfileDesc />}
             />
           </PanelFlexInnerWrap>
-          <PanelFlexInnerWrap $direction={"row"} className={"widgets"}>
+          
+         
+          
+        
+          
+        </PanelWrapper>
+        <PanelWrapper>
+          <PanelFlexInnerWrap $direction={"row"} className={"news"} $width={'100%'}>
             {/* <PanelFlx
               padding={24.5}
               flex={0}
@@ -200,42 +232,26 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
               flexDirection={"column"}
               justify="center"
             /> */}
-            <PanelFlexInnerWrap $direction={'column'} $gap={6}> 
-              {/* <PanelFlx minHeight={'auto'} children={'asd'}/>
-              <PanelFlx minHeight={'auto'} />
-              <PanelFlx minHeight={'auto'} />
-              <PanelFlx minHeight={'auto'} />
-              <PanelFlx minHeight={'auto'} />
-              <PanelFlx minHeight={'auto'} />
-              <PanelFlx minHeight={'auto'} /> */}
-              {
-                Object.values(newsCategory).map((item, index) => {
-                  return (
-                    <PanelFlx id={item.category} key={index} minHeight={'auto'} children={<div>{item.name}</div>}/>
-                  )
-                })
-              }
-              
-            </PanelFlexInnerWrap>
             <PanelFlx
-              width={600}
+              flex={'auto'}
               height={392}
               padding={24}
             >
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={false} $expanded={true} $gap={8} $width={'100%'}>
-                <Heading01 className="">today</Heading01>
+                <Heading01 className="">today - { news.name}</Heading01>
 
                 {
-                  news.data ? <SwiperWrap data={news.data} /> : "loading..."
+                  news.data && !loading ? <SwiperWrap data={news.data} loading={!loading} /> : <SwiperWrapLoading loading={loading} />
                 }
               </PanelFlexInnerWrap>
-              
+
             </PanelFlx>
+            <PanelFlexInnerWrap $direction={'row'} $flexWrap={true} $width={'260px'} $gap={12}>
+              <NewsCategory newsData={newsCategory} onclick={fetchNews} />
+
+            </PanelFlexInnerWrap>
+
           </PanelFlexInnerWrap>
-         
-          
-        
-          
         </PanelWrapper>
         
         <PanelWrapper className="app_area">
