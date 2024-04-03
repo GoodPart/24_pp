@@ -116,6 +116,19 @@ body {
   position: relative;
   // height: 100%;
   min-width: 375px;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
 }
 body {
   line-height: 1;
@@ -232,6 +245,7 @@ body,
 .swiper-slide {
   display: flex;
   width: 80%;
+  // height: 90%;
   .show {
     height: auto;
     box-shadow: none;
@@ -289,11 +303,15 @@ body,
   .profile {
     flex: 1 !important;
   }
+  
   .skills {
     flex: auto !important;
   }
 }
 @media (max-width: 767px) {
+  .news {
+      flex-direction: column !important;
+    }
   .page-wrap {
     height: auto;
   }

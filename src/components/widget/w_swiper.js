@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
-import { Swiper, SwiperSlide, Autoplay } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/autoplay'
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+
 import { PanelFlx } from '../panel';
 import styled from 'styled-components';
 
@@ -32,17 +36,23 @@ export const SwiperWrap = ({ data , loading}) => {
                     spaceBetween={24}
                     slidesPerView={'auto'}
                     centeredSlides={true}
-                    scrollbar={{ draggable: true }}
+                    navigation={true}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    loop={true}
+                    modules={[Navigation, Autoplay]}
 
                 >
                     {
                         Object.values(data).map((ele, index) => {
                             getDay(ele.publishedAt)
                             return (
-                                <SwiperSlide>
+                                <SwiperSlide key={index}>
                                     <PanelFlx flex={'auto'} flexDirection={'column'} width={'auto'}>
-                                        <LinkWrap href={ele.url}>
-                                            <img src={ele.urlToImage} />
+                                        <LinkWrap href={ele.url} target='_blank'>
+                                            <img src={ele.urlToImage} onError={i=> i.target.style.display='none'} />
                                             <InfoWrap className='info__wrap'>
                                                 <div>{getDay(ele.publishedAt)}</div>
                                                 <div>{ele.title}</div>
@@ -54,7 +64,7 @@ export const SwiperWrap = ({ data , loading}) => {
 
                         })
                     }
-                </Swiper> : <SwiperWrapLoading />
+                </Swiper> : <SwiperWrapLoading loading={loading} />
         }
         </>
     )
@@ -65,25 +75,25 @@ export const SwiperWrapLoading = ({loading }) => {
     return (
         <Swiper
             // install Swiper modules
+            allowTouchMove={false}
             spaceBetween={24}
             slidesPerView={'auto'}
             centeredSlides={true}
             scrollbar={{ draggable: true }}
+            loop={true}
+            modules={[Navigation, Autoplay]}
             className='loading'
 
         >
             {
                 arr.map((ele, index) => {
                     return (
-                        <SwiperSlide>
+                        <SwiperSlide key={index}>
                             <PanelFlx flex={'auto'} flexDirection={'column'} width={'auto'}>
-                                <LinkWrap >
+                                <LinkWrapLoading>
                                     <InfoWrap className='info__wrap'  >
-                                        <div>{}</div>
-                                        <div>{}</div>
-
                                     </InfoWrap>
-                                </LinkWrap>
+                                </LinkWrapLoading>
                             </PanelFlx>
                         </SwiperSlide>
                     )
@@ -107,6 +117,42 @@ const LinkWrap = styled.a`
         width: 100%;
         height: 100%;
         background-color: rgba(0,0,0,0.4);
+        transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        //loading true
+        /* background: ${props => props.theme.loadingtheme};
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        animation: loadingValue 1.5s infinite; */
+    }
+    img {
+        height: 100%;
+    }
+
+    &:hover:after {
+        background-color: rgba(0,0,0,0.6);
+    }
+    @keyframes loadingValue {
+        100% {
+            background-position: -96% 0;
+        }
+    }
+`
+const LinkWrapLoading = styled.a`
+    position: relative;
+    pointer-events: none;
+
+    &:after {
+        content:'';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+
+        //loading true
         transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         background: ${props => props.theme.loadingtheme};
         background-size: 200% 100%;
@@ -132,12 +178,16 @@ const InfoWrap = styled.div`
     position: absolute;
     bottom: 12px;
     left: 12px;
+    padding: 0 24px 0 0;
 
     
 
     div {
-        width: 300px;
-        height: 40px;
+        &:last-child {
+            margin-top: 6px;
+            font-size: 20px;
+            font-weight: 700;
+        }
     }
 
     * {

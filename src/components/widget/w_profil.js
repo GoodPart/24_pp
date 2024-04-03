@@ -20,7 +20,7 @@ export default function WidgetProfile({ thumbnail, name, age }) {
           <li>
             <dl>
               <dt>1994</dt>
-              <dd>born in</dd>
+              <dd>birth</dd>
             </dl>
             <dl>
               <dt>177</dt>
@@ -150,10 +150,9 @@ const Desc1 = styled.div`
 export const WidgetProfileDesc = ({ })=> {
   return (
     <ProfileDescWrap>
-      안녕하세요,개발 좋아하는 퍼블리셔 박경수입니다.
+      안녕하세요,개발 좋아하는 퍼블리셔 박경수입니다.<br />
       <br />
-      국방의 의무를 마치고 뒤늦게 시작한 공부가<br />
-      운이좋게 적성에 맞아 어느덧 7년이 되어가네요.<br />
+      국방의 의무를 마치고 뒤늦게 시작한 공부가 적성에 맞아 어느덧 7년이 되어가네요.<br />
       <br />
       처음은 단순히 이쁜 디자인을 화면에 옮기는것에 흥미를 느껴 시작했지만,<br />
       지금은 상태에 따른 인터렉션과 비즈니스 로직 등을 고민하고 있습니다.<br />
@@ -162,9 +161,11 @@ export const WidgetProfileDesc = ({ })=> {
       그래서, 기회가 온다면 놓치지 않기 위해 개인 프로젝트를 진행하며 노력하고 있습니다.<br />
       <br />
       본 페이지는 24년도를 새롭게 만든 포트폴리오 페이지입니다.<br />
+      
       <br />
+      감사합니다.<br />
       <br />
-      감사합니다. 박경수 드림
+      2024년 04월 30일, 박경수 드림
     </ProfileDescWrap>
   )
 }

@@ -43,20 +43,25 @@ const lightTheme = {
 function App() {
   const cookies = new Cookies();
   
-  const [cookie1, setCookie1, removeCookie1] = useCookies(['auth']);
-  const setCookie = (name, value, options) => {
+  const [cookie1, setCookie1, removeCookie1] = useCookies([
+    'auth',
+    'news_entertainment',
+    'news_business',
+    'news_health',
+    'news_science',
+    'news_sports',
+    'news_technology'
+  ]);
+  const setCookie = (name, value, expTime) => {
     setCookie1(name, value, {
       path: "/",
       source: "/",
-      // expires: new Date(Date.now() + 5 * 1000),
+      expires: new Date(Date.now() + expTime * 1000),
     })
   }
 
   const getCookie = (name) => {
     return cookies.get(name);
-  }
-  const popCookie = (name) => {
-    removeCookie1("auth")
   }
 
   const loginAction = (name, value) => {
@@ -65,12 +70,14 @@ function App() {
     // console.log(result);
   }
 
+
+
   useEffect(() => {
     console.log(Object.keys(cookie1).length == 0)
   }, [])
 
 
-  const cookieToolkit = { setCookie, getCookie, popCookie }
+  const cookieToolkit = { setCookie, getCookie }
 
 
   // theme 데이터 상태관리

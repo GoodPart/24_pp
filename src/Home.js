@@ -4,6 +4,7 @@ import Buttons from "./components/widget/w_buttons";
 import WidgetProfile, { Heading01, WidgetProfileDesc } from "./components/widget/w_profil";
 import ThemeWidget from "./components/widget/w_theme";
 import Today from "./components/widget/w_today";
+import { personal } from "./components/widget/skills/personal";
 import { html } from "./components/widget/skills/html";
 import { css } from "./components/widget/skills/css";
 import { js } from "./components/widget/skills/js";
@@ -44,8 +45,8 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
   const [theme, setTheme] = useState(false);
   const newsCategory = [
     {
-      category: "mixed",
-      name: "전체",
+      category: "entertainment",
+      name: "문화",
       icon : "faShuffle"
     },{
       category: "business",
@@ -71,8 +72,8 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
     },
   ]
   const [news, setNews] = useState({
-    category: "mixed",
-    name: "전체",
+    category: "entertainment",
+    name: "문화",
     data: "",
   });
   const [loading, setLoading] = useState(false);
@@ -92,26 +93,115 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
 
 
   const fetchNews = async (category) => {
+    console.log('getdata ->', category)
 
     const get = newsCategory.filter(item => item.category === category && item.name);
     setLoading(true)
-    await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&category=${category == "mixed" ? "" : category}&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
-      setNews({
-        data: res.data.articles,
-        name: get[0].name,
-        category: category
-      })
-      console.log(res.data)
-    }).catch(err => {
-      console.log(err)
-      if (err.response.status === 429) {
-        setNews({
-          ...news,
-          loading: false,
-        })
-      } 
+    const getNewsData = [
+        {
+          source: {
+            id: null,
+            name : "test"
+          },
+          author: "Michael Kern",
+          title: "Cesium Wars: China and America Battle for the Future of Big Tech",
+          url: "https://oilprice.com/Energy/Energy-General/Cesium-Wars-China-and-America-Battle-for-the-Future-of-Big-Tech.html",
+          urlToImage: "https://d32r1sh890xpii.cloudfront.net/article/718x300/2024-04-02_lcjx06xp1q.jpg",
+          publishedAt: "2024-04-03T00:00:00Z",
+          content: "Despite the repeated Russian strikes…\r\nThe total number of active…\r\nNatPower U.K.'s massive investment in…\r\nBy Michael Kern - Apr 02, 2024, 7:00 PM CDTThe key to long-term North American security has… [+30993 chars]"
+        },
+        {
+          source: {
+            id: null,
+            name: "test2"
+          },
+          author: "Investing.com",
+          title: "US stock futures muted as Wall St nurses dismal start to Q2",
+          url: "https://www.investing.com/news/stock-market-news/us-stock-futures-muted-as-wall-st-nurses-dismal-start-to-q2-3362853",
+          urlToImage: "https://i-invdn-com.investing.com/news/LYNXMPEA6M0LI_L.jpg",
+          publishedAt: "2024-04-02T23:55:27Z",
+          content: "Despite the repeated Russian strikes…\r\nThe total number of active…\r\nNatPower U.K.'s massive investment in…\r\nBy Michael Kern - Apr 02, 2024, 7:00 PM CDTThe key to long-term North American security has… [+30993 chars]"
+      },
+      {
+        source: {
+          id: null,
+          name: "test2"
+        },
+        author: "Investing.com",
+        title: "US stock futures muted as Wall St nurses dismal start to Q2 333333333333",
+        url: "https://www.investing.com/news/stock-market-news/us-stock-futures-muted-as-wall-st-nurses-dismal-start-to-q2-3362853",
+        urlToImage: "https://i-invdn-com.investing.com/news/LYNXMPEA6M0LI_L.jpg",
+        publishedAt: "2024-04-02T23:55:27Z",
+        content: "Despite the repeated Russian strikes…\r\nThe total number of active…\r\nNatPower U.K.'s massive investment in…\r\nBy Michael Kern - Apr 02, 2024, 7:00 PM CDTThe key to long-term North American security has… [+30993 chars]"
+      },
+      {
+        source: {
+          id: null,
+          name: "test2"
+        },
+        author: "Investing.com",
+        title: "US stock futures muted as Wall St nurses dismal start to Q2 44444444444",
+        url: "https://www.investing.com/news/stock-market-news/us-stock-futures-muted-as-wall-st-nurses-dismal-start-to-q2-3362853",
+        urlToImage: "https://i-invdn-com.investing.com/news/LYNXMPEA6M0LI_L.jpg",
+        publishedAt: "2024-04-02T23:55:27Z",
+        content: "Despite the repeated Russian strikes…\r\nThe total number of active…\r\nNatPower U.K.'s massive investment in…\r\nBy Michael Kern - Apr 02, 2024, 7:00 PM CDTThe key to long-term North American security has… [+30993 chars]"
+      },
+    ]
+    
+    if (cookieTool.getCookie(`news_${category}`)) {
 
+      //cookie call
+      setNews({
+        data: cookieTool.getCookie(`news_${category}`),
+        name: get[0].name,
+        category : category
+      })
+
+    } else {
+      console.log("쿠키 없음")
+      
+      // setLoading(true)
+
+      // await axios.get(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${process.env.REACT_APP_NEWS_KEY}`).then((res) => {
+
+        
+      //   setNews({
+      //     data: res.data.articles,
+      //     name: get[0].name,
+      //     category: category
+      //   })
+
+
+      //   // cookieTool.setCookie(`news_${category}`, res.data.articles, 36000) //10 = 10초
+
+      // }).catch(err => {
+      //   console.log(err)
+      //   if (err.response.status === 429) {
+      //     setNews({
+      //       ...news,
+      //       name : "요청이 너무 많습니다",
+      //       loading: false,
+      //     })
+      //   } 
+
+      // })
+
+    cookieTool.setCookie(`news_${category}`, getNewsData, 10) //10 = 10초
+    setNews({
+      data: cookieTool.getCookie(`news_${category}`),
+      name: get[0].name,
+      category: category
     })
+    
+    
+      
+      
+      
+      
+      
+
+
+    }
     setLoading(false)
   }
 
@@ -191,8 +281,8 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
 
             </PanelFlexInnerWrap>
             <PanelFlx
-              flex={'inherit'}
-              width={400}
+              flex={'auto'}
+              width={'auto'}
               height={310}
               padding={24}
               theme={theme}
@@ -203,7 +293,7 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
             <PanelFlx
               flex={'auto'}
               height={'auto'}
-              padding={12}
+              padding={24}
               theme={theme}
               children={<WidgetProfileDesc />}
             />
@@ -234,7 +324,7 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
             /> */}
             <PanelFlx
               flex={'auto'}
-              height={392}
+              height={400}
               padding={24}
             >
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={false} $expanded={true} $gap={8} $width={'100%'}>
@@ -246,7 +336,7 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
               </PanelFlexInnerWrap>
 
             </PanelFlx>
-            <PanelFlexInnerWrap $direction={'row'} $flexWrap={true} $width={'260px'} $gap={12}>
+            <PanelFlexInnerWrap $direction={'row'} $flexWrap={true} $width={'230px'} $gap={12}>
               <NewsCategory newsData={newsCategory} onclick={fetchNews} />
 
             </PanelFlexInnerWrap>
@@ -259,7 +349,10 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
             <PanelFlx padding={24} minHeight={'auto'}>
               <PanelFlexInnerWrap $direction={"column"} $flexWrap={true} $expanded={true} $gap={10}>
                 <Heading01 className="">skill</Heading01>
-                <div style={{display : "flex", gap : 10}}>
+                <div style={{ display: "flex", gap: 10 }}>
+                  <ExpandedPanel id="a0">
+                    <Pages id="a0" testState={testState} onclick={testAction} children={personal} />
+                  </ExpandedPanel>
                   <ExpandedPanel id="a1">
                     <Pages id="a1" testState={testState} onclick={testAction} children={html} />
                   </ExpandedPanel>

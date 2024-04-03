@@ -1,6 +1,6 @@
 export const nodejs = {
     img: "node.svg",
-    title: "Node js",
+    title: "Node.js",
     data: [
         {
             title: "경험",
@@ -10,6 +10,6 @@ export const nodejs = {
             ],
         }
     ],
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    desc: "1. npm을 통한 모듈 설치와 개발환경을 설정할 수 있습니다.\n2. Axios등을 통해 API서버를 구축할 수 있습니다.\n3. env 설정과 CORS 이슈등 트러블 슈팅 경험이 있습니다.\n4. AWS배포 경험이 있습니다."
 }
 

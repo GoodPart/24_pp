@@ -3,6 +3,8 @@ import styled from "styled-components"
 export function Pages({ id, testState, onclick, children }) {
     const targetCheck = testState.id == id && testState.state ? true : false;
 
+
+
     return <PagesWrap id={id} $testState={testState} className={targetCheck ? "exp" : ""}
     onMouseDown={(e) => {
             if (targetCheck) {
@@ -17,10 +19,10 @@ export function Pages({ id, testState, onclick, children }) {
         <InnerPage className={targetCheck ? "show" : ""}>
             <CloseBtn className={targetCheck ? "show" : ""} onMouseDown={() => onclick({ data: "close" })}>닫기</CloseBtn>
 
-            <h1>{children.title}</h1>
-            <div style={{display : "none",height : 100}}>{children.desc}</div>
+            <h1 className="title">{children.title}</h1>
+            <div className="desc">{children.desc}</div>
             {
-                Object.values(children.data).map((ele, index) => (<dl key={index}><dt>{ele.title}</dt><dd>{ ele.desc}</dd></dl>) )
+                Object.values(children.data).map((ele, index) => (<dl key={index}><dt>{ele.title}</dt>{ele.desc.map((ele, index) => (<dd>{ index+1}. {ele}</dd>)) }</dl>) )
             }
         </InnerPage>
     </PagesWrap>
@@ -34,14 +36,8 @@ const PagesWrap = styled.div`
     width: inherit;
     height: inherit;
     background-color: ${props => props.theme.backgroundColor100};
-    transition: width .8s cubic-bezier(0.22, 1, 0.36, 1), height .8s cubic-bezier(0.22, 1, 0.36, 1), transform .8s cubic-bezier(0.22, 1, 0.36, 1), z-index .8s cubic-bezier(0.22, 1, 0.36, 1) ;
+    transition: width .7s cubic-bezier(0.22, 1, 0.36, 1), height .7s cubic-bezier(0.22, 1, 0.36, 1), transform .7s cubic-bezier(0.22, 1, 0.36, 1), z-index .7s cubic-bezier(0.22, 1, 0.36, 1) ;
 
-    > h1 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
 
     img {
         position: absolute;
@@ -115,10 +111,12 @@ const InnerPage = styled.div`
     margin: 0 auto;
     width: 0;
     height: 100%;
-    /* height: 0; */
-    /* background-color: ${props => props.theme.backgroundColor100}; */
-    background-color: coral;
+    /* background-color: ${props => props.theme.backgroundColorDepth2}; */
     transition: opacity .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 0 0;
 
     &.show {
         position: relative;
@@ -127,12 +125,34 @@ const InnerPage = styled.div`
         width : 1200px;
         opacity: 1;
         transition: opacity .4s 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        .title {
+            font-size: 72px;
+            font-weight : 900;
+        }
+        .desc {
+            margin-top: 24px;
+            font-size : 28px;
+            white-space: pre-wrap;
+            line-height: 40px;
+        }
+
+        dl {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 24px;
+        }
+        dt {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        dd {
+            font-size : 20px;
+        }
     }
 
-    dl {
-        display: none;
-    }
-
+    
     @media (max-width : 1023px) and (min-width : 768px) {
         &.show {
             width : 600px;

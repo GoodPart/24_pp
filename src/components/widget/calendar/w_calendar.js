@@ -125,7 +125,7 @@ export const Element = ({ calendarProps, get5, getDayFunc, type }) => {
                     get5.map((ele, index) => {
                         
                         return (
-                            <div className='element' data-index={index+1}>
+                            <div key={index} className='element' data-index={index+1}>
                                 <div className={getDayFunc(new Date(ele).getDay()) == "일" || getDayFunc(new Date(ele).getDay()) == "토" ? "holly" : "" } >{getDayFunc(new Date(ele).getDay())}</div>
                                 <div key={index}>{new Date(ele).getDate()}</div>
                             </div>
