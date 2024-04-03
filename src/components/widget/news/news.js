@@ -24,6 +24,8 @@ export const NewsCategory = ({ newsData, onclick }) => {
                 minHeight={'auto'}
                 height={'auto'}
                 padding={0}
+                
+                
             >
                 <Item onClick={()=>onclick(item.category)} id={item.category}>
                     {Icon(index)}

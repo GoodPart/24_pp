@@ -7,7 +7,7 @@ export const OsAlert = ({ onclick, state, isAuth }) => {
         rank: "Take a quick tour to learn about great new features",
         
     }
-    return <Wrapper className={state.state ? "" : "hide"}>
+    return <Wrapper className={state.state ? "system-alert" : "system-alert hide"}>
         <div className="wrap__item">
             <div className="company_icon">
                 <img src="https://pbs.twimg.com/profile_images/1343164971681599488/ZV30t8pJ_400x400.jpg" />
@@ -44,16 +44,38 @@ export const Wrapper = styled.div`
     border-radius: 10px;
     border: 1px solid ${(props) => props.theme.borderColor};
 
-    animation-name: alerting;
+    
     animation-duration: 1s;
     animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
     animation-fill-mode: forwards;
 
+    
+
     &.hide {
-        animation-name: hiding;
+        /* animation-name: hiding; */
         animation-duration: 1s;
         animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
         animation-fill-mode: forwards;
+    }
+
+    @media (min-width : 768px) {
+        animation-name: alerting;
+
+        &.hide {
+            animation-name: hiding;
+        }
+    }
+    @media (max-width: 767px) {
+        top: -200px;
+        right: inherit;
+        left: 50%;
+        width : 90%;
+        transform: translateX(-50%);
+        animation-name: alertingMo;
+
+        &.hide {
+            animation-name: hidingMo;
+        }
     }
 
     .wrap__item {
@@ -153,6 +175,24 @@ export const Wrapper = styled.div`
         100% {
             right: -600px;
             top : 64px;
+
+        }
+    }
+
+    @keyframes alertingMo {
+        0% {
+            top: -200px;
+        }
+        100% {
+            top: 52px;
+        }
+    }
+    @keyframes hidingMo {
+        0% {
+            top : 52px;
+        }
+        100% {
+            top : -200px;
 
         }
     }

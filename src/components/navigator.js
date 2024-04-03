@@ -74,7 +74,7 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
                             </ul>
                         </div>
                         <div className='functions'>
-                            <div>베터리</div>
+                            {/* <div>베터리</div> */}
                             <div className='theme'><Toggle onclick={themeChange} state={themeMode} /> <span>{themeMode ? "Light" : "Dark"}</span></div>
                             <div>{getMonth}월 {getDate}일 {getHour}:{getMin}</div>
                         </div>

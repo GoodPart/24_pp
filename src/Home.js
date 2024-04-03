@@ -336,7 +336,7 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
               </PanelFlexInnerWrap>
 
             </PanelFlx>
-            <PanelFlexInnerWrap $direction={'row'} $flexWrap={true} $width={'230px'} $gap={12}>
+            <PanelFlexInnerWrap $direction={'row'} $flexWrap={true} $width={'230px'} $gap={12} className="category">
               <NewsCategory newsData={newsCategory} onclick={fetchNews} />
 
             </PanelFlexInnerWrap>
