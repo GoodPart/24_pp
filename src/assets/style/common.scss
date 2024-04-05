@@ -309,6 +309,12 @@ body,
   }
 }
 @media (max-width: 767px) {
+  .navigator {
+    .hamberger {
+      display: block !important;
+    }
+    
+  }
   .profile .app_use_info + div {
     height: 200px;
   }

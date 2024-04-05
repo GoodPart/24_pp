@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { PanelWrapper, PanelFlexInnerWrap, PanelFlx, ExpandedPanel, DetailPanel } from "./components/panel";
 import Buttons from "./components/widget/w_buttons";
 import WidgetProfile, { Heading01, WidgetProfileDesc } from "./components/widget/w_profil";
@@ -205,15 +206,24 @@ function Home({ themeChange, testAction, testState, cookieTool }) {
     setLoading(false)
   }
 
+  const navigate = useNavigate();
   useEffect(() => {
-    cookieTool.getCookie("userId") != undefined ? setIsAuth({
-      state: true,
-      userId: cookieTool.getCookie("userId")
-    }) : setIsAuth({
-      state: false,
-      value : ""
-    })
-
+    
+    console.log('-->',cookieTool.getCookie("userId") === undefined)
+    if (cookieTool.getCookie("userId") === undefined) {
+      navigate("/login");
+      setIsAuth({
+        state: false,
+        value: ""
+      })
+      
+    } else {
+      setIsAuth({
+        state: true,
+        userId: cookieTool.getCookie("userId")
+      })
+      
+    }
     
     fetchNews(news.category)
 

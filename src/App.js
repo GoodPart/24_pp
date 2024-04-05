@@ -53,10 +53,11 @@ function App() {
     'news_technology'
   ]);
   const setCookie = (name, value, expTime) => {
+    
     setCookie1(name, value, {
       path: "/",
       source: "/",
-      expires: new Date(Date.now() + expTime * 1000),
+      // expires: new Date(Date.now() + expTime * 1000),// exp 시간 임시 제거
     })
   }
 
