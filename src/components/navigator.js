@@ -47,7 +47,7 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
     }, [])
     return (
         <PanelWrapper className='navigator'>
-            <PanelFlexInnerWrap $direction={"row"} className={"navigator"} $expanded={true}>
+            <PanelFlexInnerWrap $direction={"row"} $expanded={true}>
                 <PanelFlx
                     flex={1}
                     height={'auto'}
