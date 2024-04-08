@@ -39,4 +39,8 @@ export const Wrapper = styled.div`
         outline: 1px solid ${props=> props.theme.borderColor};
     }
     
+
+    @media (max-width: 767px) {
+        height: 60%;
+    }
 ` 

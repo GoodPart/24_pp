@@ -74,4 +74,11 @@ const Item = styled.button`
 
     }
    }
+
+   @media (max-width: 767px) {
+        padding: .7rem 0 !important;
+        div {
+            font-size : 14px;
+        }
+    }
 `

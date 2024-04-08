@@ -69,12 +69,16 @@ export const Wrapper = styled.div`
         top: -200px;
         right: inherit;
         left: 50%;
-        width : 90%;
+        width : 95%;
         transform: translateX(-50%);
         animation-name: alertingMo;
 
         &.hide {
             animation-name: hidingMo;
+        }
+
+        .company_icon {
+            width: 50px;
         }
     }
 
@@ -184,12 +188,12 @@ export const Wrapper = styled.div`
             top: -200px;
         }
         100% {
-            top: 52px;
+            top: 70px;
         }
     }
     @keyframes hidingMo {
         0% {
-            top : 52px;
+            top : 70px;
         }
         100% {
             top : -200px;

@@ -27,6 +27,7 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
             : new Date().getSeconds();
 
     const [timer, setTimer] = useState("00:00:00");
+    const [menuToggle, setMenuToggle] = useState(false);
 
     const currentTimer = () => {
         const date = new Date();
@@ -43,7 +44,6 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
     startTimer();
 
     useEffect(() => {
-        // cookieTool.getCookie("userId")
     }, [])
     return (
         <PanelWrapper className='navigator'>
@@ -58,25 +58,26 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
                         
                         <div className='navis'>
                             <div>
-                                <FontAwesomeIcon icon={faAppleAlt} /> <span>Main</span>
+                                <FontAwesomeIcon icon={faAppleAlt} /> <span>Welcom</span>
                             </div>
-                            <ul>
+                            <ul className={menuToggle ? "show" : ""}>
                                 <li>
                                     {
-                                        isAuth != undefined ? <Link to={ "/"}>Home</Link>  : "Home"
+                                        isAuth != undefined ? <Link to={ "/"} onClick={()=> setMenuToggle(false)}>Home</Link>  :<span>Home</span>
                                     }
                                 </li>
                                 <li>
                                     {
-                                    <Link to="/login">Login</Link>
+                                        <Link to="/login" onClick={() => setMenuToggle(false)}>Login</Link>
                                     }
                                 </li>
                             </ul>
                         </div>
                         <div className='functions'>
                             {/* <div>베터리</div> */}
-                            <div className='theme'><Toggle onclick={themeChange} state={themeMode} /> <span>{themeMode ? "Light" : "Dark"}</span></div>
-                            <div>{getMonth}월 {getDate}일 {getHour}:{getMin}</div>
+                            <div className='theme'><Toggle onclick={themeChange} state={themeMode} /> <span>{themeMode ? "Default" : "Dark"}</span></div>
+                            <div className='clock'>{getMonth}월 {getDate}일 {getHour}:{getMin}</div>
+                            <div className='hamberger' onClick={()=>setMenuToggle(!menuToggle) }></div>
                         </div>
                     </Wrapper>
                 </PanelFlx>
@@ -107,6 +108,14 @@ const Wrapper = styled.div`
         display: flex;
         gap: 12px;
 
+        li span {
+            display: flex;
+            padding: 12px;
+            color: ${props => props.theme.textColor};
+            opacity : 0.4
+
+        }
+
         li a{
             color: ${props => props.theme.textColor};
         }
@@ -120,7 +129,81 @@ const Wrapper = styled.div`
             display : flex;
             gap: 4px;
             align-items: center;
+            
         }
 
+    }
+    .clock {
+        display: flex;
+        align-items: center;
+    }
+    .hamberger {
+        display: none;
+        position: relative;
+        width : 30px;
+        height: 30px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left : 0;
+            width : 100%;
+            height: 3px;
+            background: ${props => props.theme.linearGradientColor};
+
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left : 0;
+            width : 100%;
+            height: 3px;
+            background: ${props => props.theme.linearGradientColor};
+
+
+        }
+    }
+
+    @media (max-width: 767px) {
+        .navis {
+            align-items: center;
+
+            svg {
+                height :1.2em;
+            }
+            svg + span{
+                margin-left: 0px;
+            }
+        }
+        .theme span {
+            font-weight: 700;
+        }
+        .clock {
+            display: none;
+            font-weight: 700;
+        }
+        .navis ul {
+            display: none;
+            position: absolute;
+            top: 54px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 0;
+            flex-direction: column;
+            width: 100%;
+            background-color: ${props => props.theme.backgroundColorDepth2};
+
+            &.show {
+                display: block;
+            }
+
+            li a {
+                display: flex;
+                padding: 12px
+                
+            }
+        }
     }
 `
