@@ -319,6 +319,12 @@ body,
   .profile .app_use_info + div {
     height: 200px;
   }
+  .navigator {
+    width: 90% !important;
+    .show >div *{
+      
+    }
+  }
   .news {
     flex-direction: column !important;
 
