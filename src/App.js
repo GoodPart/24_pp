@@ -68,7 +68,6 @@ function App() {
   const loginAction = (name, value) => {
     setCookie(name, value);
     
-    // console.log(result);
   }
 
 

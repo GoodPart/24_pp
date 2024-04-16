@@ -16,8 +16,8 @@ export function Pages({ id, testState, onclick, children }) {
         }}
     >
         <img src={`${process.env.PUBLIC_URL}/logos/${children.img}`} />
-        <InnerPage className={targetCheck ? "show" : ""}>
             <CloseBtn className={targetCheck ? "show" : ""} onMouseDown={() => onclick({ data: "close" })}>닫기</CloseBtn>
+        <InnerPage className={targetCheck ? "show" : ""}>
 
             <h1 className="title">{children.title}</h1>
             <div className="desc">{children.desc}</div>
@@ -29,6 +29,7 @@ export function Pages({ id, testState, onclick, children }) {
 }
 
 const PagesWrap = styled.div`
+    overflow: hidden;
     z-index : 10;
     border-radius: 8px;
     cursor: pointer;
@@ -38,6 +39,16 @@ const PagesWrap = styled.div`
     background-color: ${props => props.theme.backgroundColor100};
     transition: width .7s cubic-bezier(0.22, 1, 0.36, 1), height .7s cubic-bezier(0.22, 1, 0.36, 1), transform .7s cubic-bezier(0.22, 1, 0.36, 1), z-index .7s cubic-bezier(0.22, 1, 0.36, 1) ;
 
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: ${props => props.theme.backgroundColor100};
+        z-index :1000;
+    }
 
     img {
         position: absolute;
@@ -48,7 +59,7 @@ const PagesWrap = styled.div`
         width : calc(100% - 24px);
         height : calc(100% - 24px);
         transition: translate .7s cubic-bezier(0.22, 1, 0.36, 1);
-        
+        z-index: 2000;
     }
 
     &.exp {
@@ -69,8 +80,13 @@ const PagesWrap = styled.div`
             animation-delay : 1s;
             animation-timing-function : cubic-bezier(0.075, 0.82, 0.165, 1);
             animation-fill-mode : forwards;
-
-           
+        }
+        &:after {
+            animation-name : hide;
+            animation-duration : .6s;
+            animation-delay : 1s;
+            animation-timing-function : cubic-bezier(0.075, 0.82, 0.165, 1);
+            animation-fill-mode : forwards;
         }
     }
 
@@ -106,17 +122,18 @@ const PagesWrap = styled.div`
 `
 
 const InnerPage = styled.div`
+    overflow: hidden;
     pointer-events: none;
     opacity : 0;
     margin: 0 auto;
     width: 0;
-    height: 100%;
-    /* background-color: ${props => props.theme.backgroundColorDepth2}; */
     transition: opacity .2s cubic-bezier(0.075, 0.82, 0.165, 1);
-    display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 100px 0 0;
+    
+
+    
 
     &.show {
         position: relative;
@@ -138,7 +155,6 @@ const InnerPage = styled.div`
         }
 
         dl {
-            display: flex;
             flex-direction: column;
             gap: 4px;
             margin-top: 24px;
