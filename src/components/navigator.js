@@ -110,7 +110,7 @@ const Wrapper = styled.div`
 
         li span {
             display: flex;
-            padding: 12px;
+            /* padding: 12px; */
             color: ${props => props.theme.textColor};
             opacity : 0.4
 
@@ -199,7 +199,7 @@ const Wrapper = styled.div`
                 display: block;
             }
 
-            li a {
+            li a, li span {
                 display: flex;
                 padding: 12px
                 
