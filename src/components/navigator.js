@@ -75,7 +75,7 @@ export function Navigation({ themeChange, themeMode, isAuth, cookieTool }) {
                         </div>
                         <div className='functions'>
                             {/* <div>베터리</div> */}
-                            <div className='theme'><Toggle onclick={themeChange} state={themeMode} /> <span>{themeMode ? "Default" : "Dark"}</span></div>
+                            <div className='theme'><span>{themeMode ? "기본 모드" : "다크 모드"}</span> <Toggle onclick={themeChange} state={themeMode} /></div>
                             <div className='clock'>{getMonth}월 {getDate}일 {getHour}:{getMin}</div>
                             <div className='hamberger' onClick={()=>setMenuToggle(!menuToggle) }></div>
                         </div>
@@ -142,6 +142,7 @@ const Wrapper = styled.div`
         position: relative;
         width : 30px;
         height: 30px;
+        opacity : .8;
 
         &:after {
             content: '';
@@ -150,7 +151,7 @@ const Wrapper = styled.div`
             left : 0;
             width : 100%;
             height: 3px;
-            background: ${props => props.theme.linearGradientColor};
+            background: ${props => props.theme.textColor};
 
         }
         &:before {
@@ -160,7 +161,7 @@ const Wrapper = styled.div`
             left : 0;
             width : 100%;
             height: 3px;
-            background: ${props => props.theme.linearGradientColor};
+            background: ${props => props.theme.textColor};
 
 
         }
@@ -178,7 +179,7 @@ const Wrapper = styled.div`
             }
         }
         .theme span {
-            font-weight: 700;
+            /* font-weight: 700; */
         }
         .clock {
             display: none;

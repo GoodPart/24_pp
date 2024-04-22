@@ -23,7 +23,8 @@ export function Login(cookieTool, loginAction) {
       
     } else {
       if (e.type === "click") {
-        cookieTool.cookieTool.setCookie("userId", e.target.value)
+        // console.log('click ->',e)
+        cookieTool.cookieTool.setCookie("userId", input)
 
         navigate("/")
       }
